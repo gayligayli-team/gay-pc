@@ -1,0 +1,141 @@
+i{
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+.icon_dangumi_type{
+	background-image: url(../img/icon_dangumi_type.png);
+	background-size: 55%;
+}
+.icon_dangumi_type:hover{
+	background-image: url(../img/icon_dangumi_type_h.png);
+	background-size: 55%;
+}
+.icon_dangumi_color{
+	background-image: url(../img/icon_dangumi_color.png);
+	background-size: 50%;
+}
+.icon_dangumi_color:hover{
+	background-image: url(../img/icon_dangumi_color_h.png);
+	background-size: 50%;
+}
+
+.icon_play_start{
+	background-image: url(../img/icon_play_start.png);
+	background-size: 60%;
+}
+.icon_play_start:hover{
+	background-image: url(../img/icon_play_start_h.png);
+	background-size: 60%;
+}
+.icon_play_stop{
+	background-image: url(../img/icon_play_stop.png);
+	background-size: 50%;
+}
+.icon_play_stop:hover{
+	background-image: url(../img/icon_play_stop_h.png);
+	background-size: 50%;
+}
+
+.icon_audio_volume{
+	background-image: url(../img/icon_audio_volume.png);
+	background-size: 80%;
+}
+.icon_audio_volume:hover{
+	background-image: url(../img/icon_audio_volume_h.png);
+	background-size: 80%;
+}
+.icon_audio_mute{
+	background-image: url(../img/icon_audio_mute.png);
+	background-size: 80%;
+}
+.icon_audio_mute:hover{
+	background-image: url(../img/icon_audio_mute_h.png);
+	background-size: 80%;
+}
+
+.icon_bangumi_show{
+	background-image: url(../img/icon_bangumi_show.png);
+	background-size: 90%;
+}
+.icon_bangumi_show:hover{
+	background-image: url(../img/icon_bangumi_show_h.png);
+	background-size: 90%;
+}
+.icon_bangumi_hide{
+	background-image: url(../img/icon_bangumi_hide.png);
+	background-size: 90%;
+}
+.icon_bangumi_hide:hover{
+	background-image: url(../img/icon_bangumi_hide_h.png);
+	background-size: 90%;
+}
+
+
+.icon_play_loop{
+	background-image: url(../img/icon_play_loop.png);
+	background-size: 70%;
+}
+.icon_play_loop:hover{
+	background-image: url(../img/icon_play_loop_h.png);
+	background-size: 70%;
+}
+.icon_play_noloop{
+	background-image: url(../img/icon_play_noloop.png);
+	background-size: 70%;
+}
+.icon_play_noloop:hover{
+	background-image: url(../img/icon_play_noloop_h.png);
+	background-size: 70%;
+}
+
+
+
+.icon_widescreen{
+	background-image: url(../img/icon_widescreen.png);
+	background-size: 85%;
+}
+.icon_widescreen:hover{
+	background-image: url(../img/icon_widescreen_h.png);
+	background-size: 85%;
+}
+.icon_nowidescreen{
+	background-image: url(../img/icon_nowidescreen.png);
+	background-size: 85%;
+}
+.icon_nowidescreen:hover{
+	background-image: url(../img/icon_nowidescreen_h.png);
+	background-size: 85%;
+}
+.paly_video_control.fullscreen .icon_nowidescreen{
+	background-color: #fff;
+	background-image: url(../img/icon_widescreen_full.png);
+}
+.paly_video_control.fullscreen .icon_nowidescreen:hover{
+	background-color: #fff;
+	background-image: url(../img/icon_widescreen_full.png);
+}
+
+.icon_fullscreen{
+	background-image: url(../img/icon_fullscreen.png);
+	background-size: 70%;
+}
+.icon_fullscreen:hover{
+	background-image: url(../img/icon_fullscreen_h.png);
+	background-size: 70%;
+}
+
+
+
+
+.dangumi .option .icon_dangumi_option{
+	background-image: url(../img/icon_dangumi_option.png);
+}
+.dangumi .option .icon_dangumi_option:hover{
+	background-image: url(../img/icon_dangumi_option_h.png);
+}
+.dangumi .option .icon_dangumi_more{
+	background-image: url(../img/icon_dangumi_more.png);
+}
+.dangumi .option .icon_dangumi_more:hover{
+	background-image: url(../img/icon_dangumi_more_h.png);
+}

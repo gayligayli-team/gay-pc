@@ -1,0 +1,55 @@
+html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, button, select, option, p, span, tr, th, td{
+	margin: 0;
+	padding: 0;
+	font-family: "Microsoft Yahei";
+	font-size: 12px;
+}
+ul, ol, li{
+	list-style-type: none;
+}
+img{
+	border: none;
+}
+i, em{
+	display: inline-block;
+	font-style: normal;
+}
+h1, h2, h3, h4, h5, h6{
+	font-weight: normal;
+}
+input, button, textarea{
+	border: 0;
+	outline: 0;
+}
+a, u{
+	text-decoration: none;
+}
+body{
+	height: 100%;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	-khtml-user-select: none;
+	user-select: none;
+}
+.clear:after{
+	clear: both;
+	content: '';
+	display: table;
+	height: 0;
+}
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+.notfound{
+	margin-top: 30px;
+}
+.notfound>h1{
+	font-size: 100px;
+	color: #00a1d6;
+	letter-spacing: 5px;
+	text-align: center;
+}

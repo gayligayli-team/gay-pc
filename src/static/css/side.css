@@ -1,0 +1,55 @@
+/* side */
+.sideMenu{
+	position: fixed;
+	margin: -250px 0 0 610px;
+	top: 50%;
+	left: 50%;
+}
+.sideMenu ul{
+}
+.sideMenu li{
+	width: 50px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	border-left: 1px solid #e5e9ef;
+	border-right: 1px solid #e5e9ef;
+	background: #f6f9fa;
+	cursor: pointer;
+}
+
+.sideMenu li:first-child{
+	border-top: 1px solid #e5e9ef;
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+}
+/* 尾TAG */
+.sideMenu li:nth-last-of-type(2){
+}
+/* 排序 */
+.sideMenu li:nth-last-of-type(2){
+/*	height: 50px;
+	line-height: 50px;
+	font-size: 16px;
+	border-top: 1px solid #e5e9ef; */
+	border-bottom: 1px solid #e5e9ef;
+	border-bottom-left-radius: 6px;
+	border-bottom-right-radius: 6px;
+}
+/* 顶部 */
+.sideMenu li:last-child{
+	margin-top: 15px;
+	height: 50px;
+	line-height: 50px;
+	font-size: 20px;
+	color: #abb3ba;
+	border-top: 1px solid #e5e9ef;
+	border-bottom: 1px solid #e5e9ef;
+	border-radius: 6px;
+	/* border-bottom-left-radius: 6px; */
+	/* border-bottom-right-radius: 6px; */
+}
+.sideMenu li:hover, .sideMenu li.active{
+	color: #fff;
+	background: #00a1d6;
+}

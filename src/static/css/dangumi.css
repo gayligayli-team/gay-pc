@@ -1,0 +1,131 @@
+/* 聊天区 */
+.dangumi{
+	width: 360px;
+	height: 660px;
+}
+.dangumi .option{
+	position: relative;
+	height: 60px;
+	line-height: 60px;
+	border-bottom: 1px solid #e2e2e2;
+}
+.dangumi .option p{
+	padding-right: 120px;
+	text-indent: 12px;
+	color: #99a2aa;
+	cursor: default;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.dangumi .option em{
+	color: #222;
+	font-weight: 700;
+	font-size: 24px;
+}
+.dangumi .option i{
+	display: inline-block;
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+}
+.dangumi .option i:hover{
+	color: #6d757a;
+	background-color: #e5e9ef;
+}
+.dangumi .option .icon_dangumi_option{
+	right: 45px;
+	top: 15px;
+}
+.dangumi .option .icon_dangumi_more{
+	right: 10px;
+	top: 15px;
+}
+.dangumi .toggle{
+	height: 36px;
+	border-bottom: 1px solid #e2e2e2;
+}
+.dangumi .toggle span{
+	box-sizing: border-box;
+	display: inline-block;
+	margin: 0 20px;
+	width: 80px;
+	height: 36px;
+	line-height: 36px;
+	text-align: center;
+	cursor: pointer;
+}
+.dangumi .toggle span.active{
+	color: #37a1e8;
+	border-bottom: 3px solid #37a1e8;
+	cursor: default;
+}
+.dangumi .filter{
+	height: 30px;
+	cursor: pointer;
+}
+.dangumi .filter span{
+	box-sizing: border-box;
+	display: inline-block;
+	line-height: 30px;
+	color: #99a2aa;
+}
+.dangumi .filter .time{
+	padding: 0 5px 0 20px;
+	width: 80px;
+}
+.dangumi .filter .text{
+	padding: 0 5px;
+	width: 180px;
+}
+.dangumi .filter .unix{
+	padding: 0 5px;
+	width: 100px;
+}
+.dangumi .content{
+	height: 491px;
+	border-bottom: 1px solid #e2e2e2;
+	cursor: pointer;
+	overflow: hidden;
+}
+.dangumi .content span{
+	box-sizing: border-box;
+	display: inline-block;
+	height: 24px;
+	line-height: 24px;
+	color: #99a2aa;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.dangumi .toggle span:hover,
+.dangumi .content li:hover span{
+	color: #37a1e8;
+}
+.dangumi .content span:nth-child(1){
+	padding: 0 5px 0 20px;
+	width: 80px;
+}
+.dangumi .content span:nth-child(2){
+	padding: 0 5px;
+	width: 180px;
+}
+.dangumi .content span:nth-child(3){
+	padding: 0 5px;
+	width: 100px;
+}
+.dangumi .history{
+	height: 40px;
+}
+.dangumi .history p{
+	line-height: 40px;
+	color: #99a2aa;
+	text-align: center;
+	cursor: pointer;
+	/*transition: all .5s;*/
+}
+.dangumi .history p:hover{
+	color: #333;
+
+}

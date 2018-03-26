@@ -1,0 +1,35 @@
+.menu{
+	margin: 0 auto;
+	width: 1200px;
+}
+.menu li{
+	float: left;
+	padding: 15px 0 10px;
+	width: 58px;
+	text-align: center;
+	cursor: pointer;
+}
+.menu li u{
+	padding: 0 2px;
+	line-height: 14px;
+	border-radius: 4px;
+	font-size: 12px;
+	color: #fff;
+	background: #ffafc9;
+}
+.menu li span{
+	display: block;
+}
+.menu li span:first-child{
+	margin-bottom: 4px;
+}
+.menu li:hover .otherMenu{
+	color: #00a1d6;
+}
+
+.menu .icon{
+	width: 48px;
+	height: 14px;
+	background: url(../img/bilibili.png) no-repeat center 0;
+	background-size: 30%;
+}

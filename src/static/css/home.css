@@ -1,0 +1,250 @@
+.main{
+	margin: 0 auto;
+	width: 1200px;
+}
+.main>div{
+	margin-bottom: 30px;
+}
+.main>div:first-child{
+	margin-bottom: 40px;
+}
+.recommend>div{
+	height: 260px;
+}
+.recommend>div:first-child{
+	margin-right: 20px;
+}
+.swiper{
+	position: relative;
+	width: 540px;
+	height: 100%;
+	border-radius: 6px;
+	overflow: hidden;
+}
+.swiper ul{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 9999px;
+	transition: all .3s;
+}
+.swiper ol{
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+	height: 20px;
+}
+.swiper ul li{
+	position: relative;
+	float: left;
+	font-size: 0;
+	cursor: pointer;
+}
+.swiper ol li{
+	display: inline-block;
+	float: left;
+	margin-left: 10px;
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+}
+.swiper ol li i{
+	margin: 4px;
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	background: #fff;
+}
+.swiper ol li:not(.active) i:hover{
+	margin: 2px;
+	width: 12px;
+	height: 12px;
+	border: 2px solid #fff;
+	background: #00a1d6;
+}
+.swiper ol li.active i{
+	margin: 1px;
+	width: 18px;
+	height: 18px;
+	background: url(https://static.hdslb.com/images/base/icons.png) -853px -727px;
+}
+.swiper img{
+	width: 540px;
+	height: 260px;
+	border-radius: 6px;
+}
+.swiper p{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	text-indent: 10px;
+	background: rgba(0, 0, 0, .5);
+	background: linear-gradient(transparent, rgba(0, 0, 0, .5));
+	background: -webkit-linear-gradient(transparent, rgba(0, 0, 0, .5));
+}
+.swiper span:hover{
+	color: rgba(255, 255, 255, .9);
+}
+.swiper span{
+	display: inline-block;
+	width: 370px;
+	height: 40px;
+	font-size: 14px;
+	color: #fff;
+	overflow: hidden;
+	opacity: 0;
+	transition: all .3s .3s;
+}
+.swiper .active span{
+	opacity: 1;
+}
+
+.recommendBox{
+	position: relative;
+	width: 640px;
+	height: 100%;
+	overflow: hidden;
+}
+.recommendBox ul{
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.recommendBox li{
+	position: relative;
+	float: left;
+	margin: 0 20px 20px 0;
+	width: 200px;
+	height: 120px;
+	border-radius: 6px;
+	font-size: 0;
+	overflow: hidden;
+	cursor: pointer;
+}
+.recommendBox li:nth-child(3n){
+	margin-right: 0;
+}
+.recommendBox li:nth-child(n+4){
+	margin-bottom: 0;
+}
+.recommendBox li img{
+	width: 200px;
+	height: 120px;
+	border-radius: 6px;
+}
+.recommendBox li span{
+	display: none;
+	position: absolute;
+	padding: 0 5px;
+	bottom: 0;
+	left: 0;
+	height: 30px;
+	line-height: 30px;
+	color: #fff;
+	border-bottom-left-radius: 6px;
+	border-bottom-right-radius: 6px;
+	background: rgba(0, 0, 0, .5);
+	background: linear-gradient(transparent, rgba(0, 0, 0, .5));
+	background: -webkit-linear-gradient(transparent, rgba(0, 0, 0, .5));
+	overflow: hidden;
+}
+.recommendBox li>div{
+	position: absolute;
+	top: 90px;
+	left: 0;
+	padding: 0 5px;
+	width: 190px;
+	height: 120px;
+
+}
+.recommendBox li p{
+	height: 20px;
+	line-height: 20px;
+	font-size: 12px;
+	color: #99a2aa;
+	overflow: hidden;
+	opacity: 0;
+	transition: all 1s;
+}
+.recommendBox li p.title{
+	margin: 6px 0 25px;
+	height: 44px;
+	line-height: 22px;
+	color: #fff;
+	border-bottom-left-radius: 6px;
+	border-bottom-right-radius: 6px;
+	opacity: 1;
+	background: rgba(0, 0, 0, .5);
+	background: linear-gradient(transparent, rgba(0, 0, 0, .5));
+	background: -webkit-linear-gradient(transparent, rgba(0, 0, 0, .5));
+}
+.recommendBox li i{
+	display: none;
+	position: absolute;
+	bottom: 3px;
+	right: 7px;
+	width: 24px;
+	height: 24px;
+	background: url(./../../static/img/icon_later.png) no-repeat;
+	background-size: cover;
+}
+.recommendBox li:hover div{
+	display: block;
+	top: 0;
+	background: rgba(0, 0, 0, .7);
+}
+.recommendBox li:hover p{
+	opacity: 1;
+	background: transparent;
+}
+.recommendBox li:hover i{
+	display: inline-block;
+}
+
+.prevList{
+	position: absolute;
+	padding: 15px 10px;
+	top: 124px;
+	left: 0;
+	width: 20px;
+	height: 40px;
+	font-size: 14px;
+	color: #fff;
+	text-align: center;
+	border-top-right-radius: 6px;
+	border-bottom-right-radius: 6px;
+	background: rgba(0, 0, 0, .6);
+	opacity: 0;
+	transition: all .5s;
+	cursor: pointer;
+}
+.nextList{
+	position: absolute;
+	padding: 15px 10px;
+	top: 124px;
+	right: 0;
+	width: 20px;
+	height: 40px;
+	font-size: 14px;
+	color: #fff;
+	text-align: center;
+	border-top-left-radius: 6px;
+	border-bottom-left-radius: 6px;
+	background: rgba(0, 0, 0, .6);
+	opacity: 0;
+	transition: all .5s;
+	cursor: pointer;
+}
+.recommendBox:hover>div{
+	opacity: 1;
+}
+
+/* banner */
+.banner img{
+	width: 100%;
+	height: 80px;
+}
+

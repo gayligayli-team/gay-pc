@@ -1,0 +1,304 @@
+.header{
+	position: relative;
+	width: 100%;
+	min-width: 1200px;
+	background: #fa6700;
+	background: url(https://www.alice47.com/img/8a7745bf492ba4565c139909be8d7e9529c07e4a.png@.webp) no-repeat center;
+}
+.center{
+	margin: 0 auto;
+	width: 1200px;
+}
+.navMenu{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 40px;
+	background: rgba(255, 255, 255, .4);
+	box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+	z-index: 10;
+}
+.navMenuBg{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 40px;
+	background: url(https://www.alice47.com/img/8a7745bf492ba4565c139909be8d7e9529c07e4a.png@.webp) no-repeat center -10px;
+	-webkit-filter: blur(4px);		/* Chrome, Opera */
+		-moz-filter: blur(4px);
+		-ms-filter: blur(4px);
+			filter: blur(4px);
+	z-index: 9;
+}
+.navMenu .fl a{
+	float: left;
+	padding: 0 11px;
+	height: 40px;
+	line-height: 40px;
+	color: #333;
+	cursor: pointer;
+}
+.navMenu .fl a:first-child{
+	margin-left: -20px;
+	padding-left: 21px;
+	background: url(./../../static/img/bilibili.png) no-repeat 0 center;
+	background-size: 30%;
+}
+.navMenu .fl a:hover{
+	background-color: rgba(255, 255, 255, .4);
+	transition: all .5s;
+}
+
+.loginHistory{
+	position: relative;
+	margin-right: 58px;
+}
+.loginHistory .navLogin{
+	float: left;
+	margin: 2px 8px;
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	box-shadow: 0 0 3px #999;
+	background-color: #fff;
+	background-image: url(https://www.alice47.com/img/akari.jpg);
+	background-size: cover;
+	cursor: pointer;
+}
+.loginHistory .userInfo{
+	float: left;
+	display: inline-block;
+	position: relative;
+}
+.loginHistory .userFace{
+	float: left;
+	margin: 2px 8px;
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	box-shadow: 0 0 3px #999;
+	background-color: #fff;
+	background-size: cover;
+	cursor: pointer;
+	transition: .5s all;
+}
+.loginHistory .memberInfo{
+	display: none;
+	/*display: inline-block;*/
+	position: absolute;
+	top: 40px;
+	left: 50%;
+	margin-left: -130px;
+	width: 260px;
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+	box-shadow: rgba(0,0,0,0.16) 0 2px 4px;
+	-webkit-box-shadow: rgba(0,0,0,0.16) 0 2px 4px;
+	background: #fff;
+	z-index: -1;
+}
+.loginHistory .memberHeader{
+	box-sizing: border-box;
+	padding: 50px 20px 0;
+	height: 210px;
+	border-bottom: 1px solid #e5e9ef;
+}
+.loginHistory .memberHeader p{
+	font-size: 14px;
+	line-height: 24px;
+	color: #f25d8e;
+	text-align: center;
+}
+.loginHistory .memberHeader ul{
+	margin-top: 10px;
+}
+.loginHistory .memberMenu{
+	box-sizing: border-box;
+	padding: 10px 20px;
+}
+.loginHistory .memberMenu li{
+	float: left;
+	box-sizing: border-box;
+	padding-left: 22px;
+	width: 50%;
+	height: 26px;
+	line-height: 26px;
+	background-repeat: no-repeat;
+	cursor: pointer;
+}
+.loginHistory .memberOut{
+	padding: 0 20px;
+	height: 30px;
+	line-height: 30px;
+
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+	background: #f4f5f7;
+}
+.loginHistory .memberOut span{
+	float: right;
+	color: #333;
+	cursor: pointer;
+}
+.loginHistory .memberMenu li:hover,
+.loginHistory .memberOut span:hover{
+	color: #00a1d6;
+}
+.loginHistory .userInfo:hover .userFace{
+	margin-top: 15px;
+	width: 50px;
+	height: 50px;
+}
+.loginHistory .userInfo:hover .memberInfo{
+	display: inline-block;
+}
+.loginHistory>span{
+	float: left;
+	display: inline-block;
+	padding: 0 10px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	cursor: pointer;
+}
+.loginHistory>span:hover{
+	background: rgba(255, 255, 255, 0.4);
+	transition: all .5s;
+}
+.loginHistory .contribute{
+	position: absolute;
+	top: 0;
+	right: -58px;
+	width: 58px;
+	height: 48px;
+	line-height: 48px;
+	color: #fff;
+	border-bottom-left-radius: 6px;
+	border-bottom-right-radius: 6px;
+	font-size: 14px;
+	text-align: center;
+	background: #da5380;
+	cursor: pointer;
+}
+.navSearchBox{
+	position: relative;
+	margin: 0 auto;
+	width: 1200px;
+	height: 170px;
+}
+.navSearch{
+	position: absolute;
+	bottom: 20px;
+	right: 0;
+}
+.navSearch button{
+	margin-right: 2px;
+	padding-left: 25px;
+	width: 75px;
+	height: 34px;
+	color: #f25d8e;
+	border-radius: 6px;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, .3);
+	background: url(./../../static/img/bilibili.png) no-repeat 5px center;
+	background-size: 25%;
+	background-color: rgba(255, 255, 255, .8);
+	transition: all .5s;
+	cursor: pointer;
+}
+.navSearch label{
+	position: relative;
+	display: inline-block;
+	width: 260px;
+	height: 34px;
+}
+.navSearch input{
+	width: 260px;
+	height: 34px;
+	border-radius: 6px;
+	text-indent: 1em;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, .3);
+	background-color: rgba(255, 255, 255, .8);
+	transition: all .5s;
+}
+.navSearch i{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 40px;
+	height: 34px;
+	background: url(./../../static/img/bilibili.png) no-repeat 5px center;
+	background-size: 50%;
+	cursor: pointer;
+}
+.navSearch button:hover, .navSearch label:hover input{
+	background-color: #fff;
+}
+.navSearch i:hover{
+	background-size: 55%;
+}
+
+/* user */
+.user .navMenu{
+	min-width: 1200px;
+	background-color: #fff;
+}
+.user .userHeader{
+	margin-bottom: 40px;
+	padding-top: 40px;
+	width: 100%;
+	min-width: 1200px;
+	height: 106px;
+	background-color: #00a0d8;
+}
+.user .userHeader img{
+	display: block;
+	margin: 0 auto;
+	width: 1200px;
+	height: auto;
+}
+
+
+
+/* icon-images */
+.icon_account{
+	background-image: url(../img/icon_account.png);
+	background-size: 15px;
+	background-position-y: 5px;
+}
+.icon_account:hover{
+	background-image: url(../img/icon_account_h.png);
+}
+.icon_contribute{
+	background-image: url(../img/icon_contribute.png);
+	background-size: 15px;
+	background-position-y: 6px;
+}
+.icon_contribute:hover{
+	background-image: url(../img/icon_contribute_h.png);
+}
+.icon_wallet{
+	background-image: url(../img/icon_wallet.png);
+	background-size: 15px;
+	background-position-y: 6px;
+}
+.icon_wallet:hover{
+	background-image: url(../img/icon_wallet_h.png);
+}
+.icon_live{
+	background-image: url(../img/icon_live.png);
+	background-size: 15px;
+	background-position-y: 5px;
+}
+.icon_live:hover{
+	background-image: url(../img/icon_live_h.png);
+}
+.icon_order{
+	background-image: url(../img/icon_order.png);
+	background-size: 15px;
+	background-position-y: 6px;
+}
+.icon_order:hover{
+	background-image: url(../img/icon_order_h.png);
+}

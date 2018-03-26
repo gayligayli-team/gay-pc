@@ -1,0 +1,88 @@
+.user_main{
+	width: 100%;
+	min-width: 1200px;
+
+}
+.register_content{
+	margin: 0 auto;
+	width: 1200px;
+}
+.register_content .main_title{
+	position: relative;
+	margin-top: 50px;
+	height: 40px;
+	border-top: 1px solid #ddd;
+}
+.register_content .main_title h1{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -50px 0 0 -60px;
+	width: 120px;
+	height: 50px;
+	line-height: 50px;
+	font-size: 36px;
+	background-color: #fff;
+	text-align: center;
+	cursor: default;
+}
+.register_content .main_from{
+	padding-left: 400px;
+}
+.register_content .main_from p{
+	width: 400px;
+	height: 30px;
+	line-height: 30px;
+}
+.register_content .main_from a{
+	color: #00a1d6;
+}
+.register_content .main_from a:hover{
+	color: #f25d8e;
+}
+.main_from .security_level{
+	text-indent: 2px;
+	cursor: default;
+}
+.main_from .security_level span{
+	font-size: 14px;
+	font-weight: bold;
+}
+.main_from .security_level.active{
+
+}
+.main_from label{
+	display: block;
+	width: 400px;
+}
+.main_from label>*{
+	float: left;
+}
+.register_content .main_from .agreement{
+	padding: 10px 0;
+	height: 20px;
+	line-height: 20px;
+}
+.main_from .agreement>*{
+	float: left;
+}
+.main_from .agreement span{
+	margin-left: 5px;
+	line-height: 20px;
+	cursor: default;
+}
+.from_email{
+	text-align: right;
+}
+.from_phone{
+	position: relative;
+	height: 40px !important;
+	line-height: 40px !important;
+}
+.phone_send_message{
+	position: absolute;
+	top: 2px;
+	right: 2px;
+	height: 36px !important;
+	line-height: 36px !important;
+}

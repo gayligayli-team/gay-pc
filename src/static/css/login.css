@@ -1,0 +1,97 @@
+.user_main{
+	width: 100%;
+	min-width: 1200px;
+
+}
+.login_content{
+	margin: 0 auto;
+	width: 1200px;
+}
+.login_content .main_title{
+	position: relative;
+	margin-top: 50px;
+	height: 40px;
+	border-top: 1px solid #ddd;
+}
+.login_content .main_title h1{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -50px 0 0 -60px;
+	width: 120px;
+	height: 50px;
+	line-height: 50px;
+	font-size: 36px;
+	background-color: #fff;
+	text-align: center;
+	cursor: default;
+}
+.login_content .main_login{
+}
+.login_content .app_qrcode{
+	float: left;
+	box-sizing: border-box;
+	margin-top: 10px;
+	width: 600px;
+	height: 270px;
+	border-right: 1px solid #ddd;
+}
+.login_content .app_qrcode img{
+	width: 600px;
+	height: 270px;
+}
+.login_content .main_from{
+	float: left;
+	box-sizing: border-box;
+	padding-left: 50px;
+	width: 600px;
+}
+.login_content p{
+	width: 400px;
+	height: 30px;
+	line-height: 30px;
+}
+.main_from p.remember{
+	padding: 10px 0;
+	height: 24px;
+	line-height: 24px;
+}
+.main_from .remember>*{
+	float: left;
+}
+.main_from .remember span{
+	margin-left: 5px;
+	line-height: 20px;
+	cursor: default;
+}
+.main_from .remember span>em{
+	margin-left: 10px;
+	color: #bbb;
+}
+.main_from .remember a em{
+	color: #00a1d6;
+}
+.main_from .remember .other{
+	float: right;
+}
+
+.main_from .from_login{
+	height: 40px;
+}
+.from_login>button{
+	transition: all .5s
+}
+.from_login>button{
+	border: 1px solid #0381aa;
+}
+.from_login>button:hover{
+	background-color: #00bee7;
+}
+.from_login a{
+	margin-left: 30px;
+}
+.main_from a em:hover{
+	color: #f25d8e;
+}
+
+

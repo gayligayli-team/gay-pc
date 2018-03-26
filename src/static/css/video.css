@@ -1,0 +1,374 @@
+.main_video .title{
+	margin: 0 auto;
+	padding: 20px 0 10px;
+	width: 1200px;
+	border-top: 1px solid #eee;
+	background: #fff;
+}
+/* 视频信息 */
+.video_info{
+	padding-left: 10px;
+	height: 100%;
+}
+.video_info h1{
+	margin-bottom: 15px;
+	height: 24px;
+	line-height: 24px;
+	font-size: 18px;
+	color: #525659;
+	/* #99a2aa  */
+	cursor: default;
+}
+.video_info div{
+	margin-bottom: 15px;
+	color: #99a2aa;
+}
+.video_info span, .video_info a{
+	color: #99a2aa;
+}
+.video_info a:hover{
+	color: #00a1d6;
+}
+
+.video_info .correlate span{
+	display: inline-block;
+	margin-right: 40px;
+}
+.video_info .count p{
+	display: inline-block;
+}
+.video_info .count p:first-child{
+	margin-right: 15px;
+	border-right: 1px solid #e8e8e8;
+}
+.video_info .count p:last-child{
+	cursor: pointer;
+}
+.video_info .count span{
+	display: inline-block;
+	margin-right: 40px;
+	width: 65px;
+	height: 30px;
+	line-height: 30px;
+	text-indent: 30px;
+	color: #99a2aa;
+	background-image: url(https://static.hdslb.com/images/base/icons.png);
+}
+.video_info .count .non_rank{
+	display: none;
+}
+.video_info .count .icon_play{
+	background-position: -659px -209px;
+}
+.video_info .count .icon_danmaku{
+	background-position: -659px -274px;
+}
+.video_info .count .icon_rank{
+	background-position: -660px -1681px;
+}
+.video_info .count .icon_coins{
+	background-position: -659px -338px;
+}
+.video_info .count .icon_favorites{
+	background-position: -659px -402px;
+}
+.video_info .count .icon_coins:hover,
+.video_info .count .icon_favorites:hover,
+.video_info .count .icon_favorites.active{
+	background-position-x: -725px;
+}
+/* up信息 */
+.author_info{
+	padding-right: 10px;
+}
+.author_info .pic{
+	margin-right: 20px;
+	width: 60px;
+	height: 60px;
+	border: 2px solid transparent;
+	border-radius: 50%;
+	/*box-shadow: 0 0 3px #99a2aa;*/
+	cursor: pointer;
+}
+.author_info .pic img{
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+}
+.author_info .info{
+	width: 200px;
+}
+.author_info .name{
+	width: 120px;
+	height: 20px;
+	line-height: 20px;
+	font-size: 14px;
+	word-wrap: break-word;
+	overflow: hidden;
+	color: #00a1d6;
+	cursor: pointer;
+}
+.author_info .name:hover{
+	color: #ff85ad;
+}
+.author_info .icon_send_msg{
+	width: 65px;
+	height: 20px;
+	line-height: 20px;
+	text-indent: 25px;
+	color: #99a2aa;
+	background-image: url(https://static.hdslb.com/images/base/icons.png);
+	background-position: -277px -2005px;
+	cursor: pointer;
+}
+.author_info .icon_send_msg:hover{
+	color: #00a1d6;
+}
+.author_info .desc{
+	min-height: 12px;
+	line-height: 18px;
+}
+.author_info .count{
+	margin-bottom: 10px;
+}
+.author_info .count span{
+	display: inline-block;
+	width: 50%;
+	height: 24px;
+	line-height: 24px;
+	color: #99a2aa;
+}
+.author_info .follow{
+	display: inline-block;
+	box-sizing: border-box;
+	margin-right: 20px;
+	width: 120px;
+	height: 24px;
+	line-height: 22px;
+	border: 1px solid #00a1d6;
+	border-radius: 4px;
+	font-size: 14px;
+	color: #fff;
+	background: #00a1d6;
+	text-align: center;
+	cursor: pointer;
+	transition: all .5s;
+}
+.author_info .follow:hover{
+	border: 1px solid #00b5e5;
+	background: #00b5e5;
+}
+.author_info .support{
+	display: inline-block;
+	box-sizing: border-box;
+	width: 60px;
+	height: 24px;
+	line-height: 22px;
+	border: 1px solid #ff85ad;
+	border-radius: 4px;
+	font-size: 14px;
+	color: #ff85ad;
+	background: #fff;
+	text-align: center;
+	cursor: pointer;
+	transition: all .5s;
+}
+.author_info .support:hover{
+	color: #fff;
+	background: #ff85ad;
+}
+/* 工具栏 */
+.play .tools{
+	margin: 0 auto;
+	width: 1200px;
+	height: 80px;
+	border: 1px solid #e5e9ef;
+	border-radius: 6px;
+	background: #fff;
+	z-index: 103;
+}
+.play .tools .share{
+	float: left;
+	position: relative;
+	width: 340px;
+}
+.play .tools .share li{
+	float: left;
+	cursor: pointer;
+}
+.play .tools .share li:not(:first-child){
+	margin: 20px 0 20px 10px;
+	width: 40px;
+	height: 40px;
+	background-image: url(https://static.hdslb.com/images/base/icons.png);
+	background-position-x: -1357px;
+}
+.play .tools .share li:first-child{
+	padding: 0 20px;
+	height: 80px;
+	line-height: 80px;
+	font-size: 20px;
+}
+.play .tools .layer{
+	/*display: none;*/
+	position: absolute;
+	top: 81px;
+	left: -1px;
+	border: 1px solid #e5e9ef;
+	border-top: 0;
+	width: 700px;
+	height: 0px;
+	background: #fff;
+	box-shadow: rgba(0,0,0,0.16) 0 2px 4px;
+	-webkit-box-shadow: rgba(0,0,0,0.16) 0 2px 4px;
+	transition: height .2s ease-in .3s;
+	cursor: default;
+	z-index: 100;
+}
+.play .tools>div{
+	position: relative;
+	float: left;
+	width: 120px;
+	height: 80px;
+	cursor: pointer;
+}
+.play .tools>div i{
+	display: inline-block;
+	width: 80px;
+	height: 80px;
+}
+.play .tools>div p{
+	position: absolute;
+	display: inline-block;
+	top: 18px;
+	right: 10px;
+}
+.play .tools>div span{
+	display: block;
+	font-size: 16px;
+	line-height: 20px;
+	color: #333;
+}
+.play .tools>div span:last-child{
+	font-size: 12px;
+	color: #999;
+}
+.play .tools .favorites{
+	position: relative;
+	padding-left: 30px;
+}
+.favorites:before{
+	content: '';
+	position: absolute;
+	left: 17px;
+	top: 32px;
+	border-left: 1px solid #ccc;
+	height: 20px;
+}
+.play .tools .coins{
+	width: 110px;
+}
+.play .tools .watchlater{
+	width: 130px;
+}
+.forapp{
+}
+.support{
+}
+
+.icon_share_video{
+	background-position-y: -972px;
+}
+.play .tools .share li.icon_share_video:hover{
+	background-position-x: -1421px;
+}
+.icon_share_webo{
+	background-position-y: -586px;
+}
+.play .tools .share li.icon_share_webo:hover{
+	background-position-x: -1427px;
+}
+.icon_share_qzone{
+	background-position-y: -726px;
+}
+.play .tools .share li.icon_share_qzone:hover{
+	background-position-x: -1427px;
+}
+.icon_share_qq{
+	background-position-y: -796px;
+}
+.play .tools .share li.icon_share_qq:hover{
+	background-position-x: -1427px;
+}
+.icon_share_tie{
+	background-position-y: -656px;
+}
+.play .tools .share li.icon_share_tie:hover{
+	background-position-x: -1427px;
+}
+.favorites i{
+	background-image: url(https://static.hdslb.com/images/base/anim-fav.png);
+	background-position: 0px 80px;
+	background-position: 0px 0px;
+}
+
+.coins i{
+	background-image: url(https://static.hdslb.com/images/base/anim-coin.png);
+	background-position: 0px 64px;
+	background-position: 0px -18px;
+}
+
+.watchlater i{
+	background-image: url(https://static.hdslb.com/images/base/anim-watch-later.png);
+	background-position: 80px 0px;
+	background-position: 0px 0px;
+}
+
+.forapp i{
+	background-image: url(https://static.hdslb.com/images/base/anim-app.png);
+	background-position: 0px 0px;
+}
+
+
+
+
+
+
+
+
+.play .tools .share:hover{
+	background-color: #fff;
+	height: 81px;
+	border-radius: 4px 0 0 0;
+	margin-left: -1px;
+	margin-right: -1px;
+	border-left: 1px solid #e5e9ef;
+	border-right: 1px solid #e5e9ef;
+
+	box-shadow: rgba(0,0,0,0.16) 0 2px 4px;
+	-webkit-box-shadow: rgba(0,0,0,0.16) 0 2px 4px;
+}
+.play .tools .share:hover .layer{
+	height: 300px;
+}
+.play .tools .share li:nth-child(2):hover,
+.play .tools .share li:nth-child(3):hover{
+	border-color: #f73969;
+	color: #f73969;
+}
+.play .tools .share li:nth-child(4):hover{
+	border-color: #fa6700;
+	color: #fa6700;
+}
+.play .tools .share li:nth-child(5):hover,
+.play .tools .share li:nth-child(6):hover{
+	border-color: #37a1e8;
+	color: #37a1e8;
+}
+/* 其他功能 */
+.main_video .inner{
+	margin: 0 auto;
+	width: 1200px;
+	height: 400px;
+	background: yellow;
+}

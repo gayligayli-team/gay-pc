@@ -1,0 +1,111 @@
+.register_slider{
+	position: relative;
+	margin-top: 15px;
+	width: 240px;
+	height: 40px;
+	/*background-color: #fa6700;*/
+}
+.reg_slider_content{
+	position: relative;
+	margin-left: 7px;
+	padding-top: 6px;
+	width: 170px;
+}
+.reg_slider_block{
+	box-sizing: border-box;
+	position: absolute;
+	top: 0;
+	left: 0%;
+	width: 40px;
+	height: 40px;
+	box-shadow: 0 0 8px #c3c3c3;
+	border: 1px solid #c3c3c3;
+	border-radius: 50%;
+	background: #25b4dccc;
+	background-color: #f2f2f2;
+	cursor: pointer;
+	transition:  all .2s linear;
+	z-index: 108;
+}
+.reg_slider_block.animation{
+	transition:  all .2s linear;
+}
+.reg_slider_bar{
+	box-sizing: border-box;
+	width: 240px;
+	height: 28px;
+	border-radius: 28px;
+	border: 1px solid #999;
+	background: #eee;
+}
+
+.reg_slider_image{
+	display: none;
+	box-sizing: border-box;
+	position: absolute;
+	padding: 15px;
+	top: -154px;
+	left: -15px;
+	width: 270px;
+	height: 160px;
+	border: 1px solid #d2ccc2;
+	border-radius: 10px;
+	background: #f2ece1;
+	z-index: 109;
+}
+.reg_slider_bg{
+	position: relative;
+	width: 240px;
+	margin: 0 0;
+}
+.reg_slider_image img{
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	border: 1px solid #d2ccc2;
+}
+.reg_slider_obstruct{
+	position: absolute;
+	top: 0;
+	margin: 16px 20px 0 7px;
+	width: 170px;
+	height: 126px;
+}
+.reg_slider_obstruct i{
+	box-sizing: border-box;
+	position: absolute;
+	top: 0;
+	left: 0%;
+	width: 40px;
+	height: 40px;
+	box-shadow: 0 0 8px 2px #333;
+	border: 1px solid #c3c3c3;
+	border-radius: 2px;
+	background-position: -7px -1px;
+	z-index: 120;
+	/* transition:  all .1s linear; */
+}
+.reg_slider_obstruct u{
+	box-sizing: border-box;
+	position: absolute;
+	top: 0;
+	left: 0%;
+	width: 40px;
+	height: 40px;
+	border: 1px solid #333;
+	border-radius: 4px;
+	background-color: rgba(45, 45, 45, .5);
+	z-index: 119;
+}
+.block_layer{
+	box-sizing: border-box;
+	position: absolute;
+	top: 0;
+	left: 0%;
+	width: 40px;
+	height: 40px;
+	box-shadow: 0 0 8px 1px #333 inset;
+	border: 1px solid #333;
+	border-radius: 4px;
+	z-index: 118;
+}
