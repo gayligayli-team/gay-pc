@@ -21,7 +21,7 @@ const api = function({
 		body: data,
 		// mode: 'no-cors',
 		// cache: 'force-cache',
-		// credentials: 'include'
+		credentials: 'include'
 	}
 	if(type === 'GET'){
 		// 数据拼接字符串

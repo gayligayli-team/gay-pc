@@ -36,18 +36,21 @@ class RegisterMain extends Component{
 				name: "alias",
 				placeholder: "昵称（例：gay）",
 				value: "",
+				value: "futa",// Harvey
 			},
 			password: {
 				type: "password",
 				name: "pwd",
 				placeholder: "密码（6-16个字符组成，区分大小写）",
 				value: "",
+				value: "123456",
 			},
 			phone: {
 				type: "tel",
 				name: "phone",
 				placeholder: "填写常用手机号",
 				value: "",
+				value: "15767061544",
 				width: 300,
 			},
 			area: {
@@ -132,19 +135,39 @@ class RegisterMain extends Component{
 		});
 	}
 	sendMessage = _ =>{
-		console.log("发送验证码");
+		let data = {
+			phone: this.state.phone.value,
+			// area: this.state.area,
+		}
+		// console.warn(data);
+		if(!data.phone)return;
+		api({
+			url: 'entrance/sendmsg',
+			type: 'POST',
+			data,
+		})
+		.then(res => {
+			if(res.result === 0){
+				console.log("短信发送成功!,请在120秒内使用");
+			}else{
+				console.warn(res);
+			}
+		}).catch(err => {
+			console.log(err);
+		});
 	}
 	fromSubmit = _ => {
-		if(!this.state.alias.value)return;
-		if(!this.state.password.value)return;
-		if(!this.state.phone.flag)return;
-		if(!this.state.phonecode.flag)return;
 		let data = {
 			name: this.state.alias.value,
 			password: this.state.password.value,
 			phone: this.state.phone.value,
 			phonecode: this.state.phonecode.value,
 		}
+		console.warn(data);
+		if(!data.name)return;
+		if(!data.password)return;
+		if(!data.phone)return;
+		if(!data.phonecode)return;
 		api({
 			url: 'entrance/register',
 			type: 'POST',
@@ -183,14 +206,14 @@ class RegisterMain extends Component{
 						</p>
 						<p className="from_phone">
 							<Input {...this.state.phonecode} changeValue={this.phonecodeChange} />
-							<Button {...this.state.sendCode} change={this.sendMessage} />
+							<Button {...this.state.sendCode} click={this.sendMessage} />
 						</p>
 						<p className="agreement clear">
 							<Checkbox {...this.state.agreement} change={this.changeCheckbox} />
 							<span>我已同意<Link to='/login/email'><em>《gayligayli用户使用协议》</em></Link></span>
 						</p>
 						{/* 注册 */}
-						<Button {...this.state.submit} change={this.fromSubmit} />
+						<Button {...this.state.submit} click={this.fromSubmit} />
 						<p className="from_email">
 							<Link to='/login'><span>已有账号，直接登录&gt;</span></Link>
 						</p>

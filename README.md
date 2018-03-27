@@ -3,7 +3,7 @@ gayligayli视频站，pc端主站
 
 
 ## 技术栈：
-  react + react-router + redux + react-redux + webpack + fetch + ES6/7/8等
+  react + react-router + redux + react-redux + webpack + fetch + ES6/7/8 等
 
 
 ## 演示
@@ -18,9 +18,13 @@ gayligayli视频站，pc端主站
 
  cd gay-pc
 
+ npm install -g create-react-app
+
+ create-react-app my-app
+
  npm i
-  
+
  npm start
 
  npm run build （发布）
-
+```
