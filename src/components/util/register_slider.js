@@ -15,8 +15,8 @@ class RegSlider extends Component{
 			blockVal: 0,
 			validState: false,
 			imageStatus: false,
-			moveStatus: false,			
-			foucsStatus: false,			
+			moveStatus: false,
+			foucsStatus: false,
 		}
 	}
 	url = "https://www.alice47.com/validate_img/0.png";

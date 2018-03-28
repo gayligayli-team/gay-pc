@@ -10,12 +10,13 @@ import './../../static/css/from.css'
  * label	|placeholder			String(Empty
  * readonly							Boolean(False
  * error	|提示					String(Null
+ * max		|maxlength				Number(Empty
  *
  * options	|options				Array([]
  * disabled	|disabled				Boolean(False
  * css		|class					String(Null
  * width	|style					
- * change	|event					Function(Null
+ * click	|event					Function(Null
  */
 
 
@@ -35,6 +36,7 @@ class Input extends Component{
 			type,
 			name,
 			value,
+			max,
 		} = this.props;
 		return (
 			<input
@@ -43,6 +45,7 @@ class Input extends Component{
 			name={name}
 			defaultValue={value}
 			onChange={this.handleChange}
+			maxLength={max}
 			style={{width: this.props.width+"px"}}
 			className="from_input" />
 		)
@@ -100,12 +103,11 @@ class Button extends Component{
 		this.props.click(e);
 	}
 	render(){
-		// onClick={this.event}
 		return (
 			<button
 			style={{width: this.props.width+"px"}}
 			onClick={this.handleChange}
-			className={`${this.props.css?this.props.css+" ":""}${this.props.disabled?"disabled ":""}from_button`}>{this.props.title}</button>
+			className={`${this.props.css?this.props.css+" ":""}${this.props.disabled?"disabled ":""}from_button`}>{this.props.remind || this.props.title}</button>
 		)
 	}
 }

@@ -43,8 +43,8 @@ class LoginHistory extends Component {
 	constructor(props){
 		super(props)
 		// 登录状态
-		let userId = localStorage.getItem('UserID');
-		let userMD5 = localStorage.getItem('UserID_ckMD5');
+		let userId = localStorage.getItem('UserID') || sessionStorage.getItem('UserID');
+		let userMD5 = localStorage.getItem('UserID_ckMD5') || sessionStorage.getItem('UserID_ckMD5');
 		let userState = userId&&userMD5?true:false;
 		userState&&this.getUserInfo(userId, userMD5);
 		this.state = {
@@ -72,14 +72,14 @@ class LoginHistory extends Component {
 					alias: res.data.name,
 					coins: res.data.coins,
 				});
-				console.log(res.msg, res.data);
+				// console.log(res.msg, res.data);
 			}else{
 				this.setState({
 					loading: true,
 					userState: false,
 				});
-				localStorage.removeItem('UserID');
-				localStorage.removeItem('UserID_ckMD5');
+				localStorage.removeItem('UserID') || sessionStorage.removeItem('UserID');
+				localStorage.removeItem('UserID_ckMD5') || sessionStorage.removeItem('UserID_ckMD5');
 				console.warn(res);
 			}
 		}).catch(err => {
@@ -87,8 +87,8 @@ class LoginHistory extends Component {
 		});
 	}
 	userLogout = _ => {
-		let mid = localStorage.getItem('UserID');
-		let md5 = localStorage.getItem('UserID_ckMD5');
+		let mid = localStorage.getItem('UserID') || sessionStorage.getItem('UserID');
+		let md5 = localStorage.getItem('UserID_ckMD5') || sessionStorage.getItem('UserID_ckMD5');
 		api({
 			url: 'entrance/logout',
 			type: 'POST',
@@ -102,8 +102,8 @@ class LoginHistory extends Component {
 				this.setState({
 					userState: false,
 				});
-				localStorage.removeItem('UserID');
-				localStorage.removeItem('UserID_ckMD5');
+				localStorage.removeItem('UserID') || sessionStorage.removeItem('UserID');
+				localStorage.removeItem('UserID_ckMD5') || sessionStorage.removeItem('UserID_ckMD5');
 				// this.props.history.push('/');
 				console.log(res.msg);
 			}else{

@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import './../../static/css/register.css'
 
 import api from './../../api/fetch'
+import validate from './../../api/validate'
+
 
 import {
 	Input,
@@ -36,22 +38,22 @@ class RegisterMain extends Component{
 				name: "alias",
 				placeholder: "昵称（例：gay）",
 				value: "",
-				value: "futa",// Harvey
+				max: 12,
 			},
 			password: {
 				type: "password",
 				name: "pwd",
-				placeholder: "密码（6-16个字符组成，区分大小写）",
+				placeholder: "密码（6-18个字符组成，区分大小写）",
 				value: "",
-				value: "123456",
+				max: 18,
 			},
 			phone: {
 				type: "tel",
 				name: "phone",
 				placeholder: "填写常用手机号",
 				value: "",
-				value: "15767061544",
 				width: 300,
+				max: 11,
 			},
 			area: {
 				type: "tel",
@@ -69,8 +71,10 @@ class RegisterMain extends Component{
 			},
 			sendCode: {
 				title: "点击获取",
+				remind: "",
 				disabled: false,
 				css: "phone_send_message",
+				sec: 0,
 				width: 140,
 			},
 			phonecode: {
@@ -78,7 +82,6 @@ class RegisterMain extends Component{
 				name: "phonecode",
 				position: "absolute",
 				value: "",
-				max: 6,
 			},
 			agreement: {
 				type: "checkbox",
@@ -139,8 +142,7 @@ class RegisterMain extends Component{
 			phone: this.state.phone.value,
 			// area: this.state.area,
 		}
-		// console.warn(data);
-		if(!data.phone)return;
+		if(!validate.isNull(data.phone, '手机号') || !validate.phoneError(data.phone))return;
 		api({
 			url: 'entrance/sendmsg',
 			type: 'POST',
@@ -148,13 +150,46 @@ class RegisterMain extends Component{
 		})
 		.then(res => {
 			if(res.result === 0){
-				console.log("短信发送成功!,请在120秒内使用");
+				console.log("短信发送成功!");
+				this.setState({
+					sendCode: {
+						...this.state.sendCode,
+						disabled: true,
+						remind: '重新获取验证码',
+						sec: 60,
+					}
+				});
+				this.msgTimeout();
 			}else{
 				console.warn(res);
 			}
 		}).catch(err => {
 			console.log(err);
 		});
+	}
+	msgTimeout = _ => {
+		let sec = this.state.sendCode.sec - 1;
+		this.clearTimeout = setTimeout(_ => {
+			if(sec > 0){
+				this.setState({
+					sendCode: {
+						...this.state.sendCode,
+						remind: `${sec}秒后重新获取`,
+						sec,
+					}
+				});
+				this.msgTimeout();
+			}else{
+				this.setState({
+					sendCode: {
+						...this.state.sendCode,
+						disabled: false,
+						remind: '',
+						sec: 0,
+					}
+				});
+			}
+		}, 1000);
 	}
 	fromSubmit = _ => {
 		let data = {
@@ -163,11 +198,11 @@ class RegisterMain extends Component{
 			phone: this.state.phone.value,
 			phonecode: this.state.phonecode.value,
 		}
-		console.warn(data);
-		if(!data.name)return;
-		if(!data.password)return;
-		if(!data.phone)return;
-		if(!data.phonecode)return;
+		let flag = validate.isNull(data.name, '昵称') && validate.nameError(data.name) &&
+		validate.isNull(data.password, '密码') && validate.psdError(data.password) &&
+		validate.isNull(data.phone, '手机号') && validate.phoneError(data.phone) &&
+		validate.isNull(data.phonecode, '验证码');
+		if(!flag)return;
 		api({
 			url: 'entrance/register',
 			type: 'POST',
@@ -193,7 +228,7 @@ class RegisterMain extends Component{
 					<div className="main_from">
 						<Input {...this.state.alias} changeValue={this.aliasChange} />
 						<p className="security_level active">
-							<span>安全级别</span>
+							{/* <span>安全级别</span> */}
 						</p>
 						<Input {...this.state.password} changeValue={this.passwordChange} />
 						<p></p>
@@ -202,7 +237,7 @@ class RegisterMain extends Component{
 							<Input {...this.state.phone} changeValue={this.phoneChange} />
 						</label>
 						<p className="from_email">
-							<Link to='/login/email'><span>用邮箱注册&gt;</span></Link>
+							{/* <Link to='/login/email'><span>用邮箱注册&gt;</span></Link> */}
 						</p>
 						<p className="from_phone">
 							<Input {...this.state.phonecode} changeValue={this.phonecodeChange} />

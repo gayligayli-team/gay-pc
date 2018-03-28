@@ -18,10 +18,6 @@ gayligayli视频站，pc端主站
 
  cd gay-pc
 
- npm install -g create-react-app
-
- create-react-app my-app
-
  npm i
 
  npm start
