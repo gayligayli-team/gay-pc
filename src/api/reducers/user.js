@@ -1,6 +1,4 @@
-// import { combineReducers } from 'redux';
-
-const reducers = function(state = {
+const defaultState = {
 	recommendList: [],
 	recommendBox: {},
 	columnConfig: {
@@ -27,9 +25,9 @@ const reducers = function(state = {
 	columnList: [],
 	rankList: [],
 	bangumiList: [],
-	// video
-	videoDetail: {},
-}, action){
+}
+
+const reducer = (state = defaultState, action) => {
 	const { type, data } = action;
 	switch (type){
 		case 'LOADING_RECOMMEND':
@@ -58,18 +56,12 @@ const reducers = function(state = {
 				...state,
 				bangumiList: data,
 			}
-		// video
-		case 'LOADING_VIDEO_INFO':
-			return {
-				...state,
-				videoDetail: data,
-			}
 
 		default:
 			return {
-				...state,
+				state,
 			}
 	}
 }
 
-export default reducers
+export default reducer

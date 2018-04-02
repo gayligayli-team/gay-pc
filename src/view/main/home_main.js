@@ -112,6 +112,7 @@ class HomeMain extends Component{
 			rankList,
 			bangumiList,
 		} = this.props
+		console.log(columnConfig);
 		return (
 			<div>
 				<div className="main">

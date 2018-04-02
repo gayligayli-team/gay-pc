@@ -1,9 +1,9 @@
 import React, { Component } from "react"
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import { createStore } from 'redux'
+//import { createStore } from 'redux'
 import { Provider } from 'react-redux'
-import reducers from './../api/reducers.js'
-
+// import reducers from './../api/reducers.js'
+import store from './../api/store.js'
 
 // Component
 import App from "./../App"
@@ -15,7 +15,6 @@ import Register from './../view/register'
 
 
 
-const store = createStore(reducers)
 
 class route extends Component{
 	render(){
