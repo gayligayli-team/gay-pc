@@ -33,12 +33,11 @@ class RegisterMain extends Component{
 		 * change	|event					Function(Null
 		 */
 		this.state = {
-			alias: {
+			email: {
 				type: "text",
-				name: "alias",
-				placeholder: "昵称（例：gay）",
+				name: "email",
+				placeholder: "填写常用邮箱",
 				value: "",
-				max: 12,
 			},
 			password: {
 				type: "password",
@@ -88,7 +87,7 @@ class RegisterMain extends Component{
 				checked: false,
 			},
 			submit: {
-				title: "注册",
+				title: "发送验证邮件",
 				disabled: true,
 			},
 		}
@@ -226,18 +225,9 @@ class RegisterMain extends Component{
 						<h1>注册</h1>
 					</div>
 					<div className="main_from">
-						<Input {...this.state.alias} changeValue={this.aliasChange} />
-						<p className="security_level active">
-							{/* <span>安全级别</span> */}
-						</p>
-						<Input {...this.state.password} changeValue={this.passwordChange} />
-						<p></p>
-						<label className="clear">
-							<Select {...this.state.area} />
-							<Input {...this.state.phone} changeValue={this.phoneChange} />
-						</label>
+						<Input {...this.state.email} changeValue={this.aliasChange} />
 						<p className="from_email">
-							<Link to='/registerMail'><span>用邮箱注册&gt;</span></Link>
+							<Link to='/register'><span>用手机注册&gt;</span></Link>
 						</p>
 						<p className="from_phone">
 							<Input {...this.state.phonecode} changeValue={this.phonecodeChange} />

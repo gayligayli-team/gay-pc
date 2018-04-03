@@ -12,6 +12,8 @@ import Home from './../view/home'
 // User
 import Login from './../view/user'
 import Register from './../view/register'
+import RegisterMail from './../view/registerEmail'
+
 
 
 
@@ -27,6 +29,8 @@ class route extends Component{
 							{/* 用户功能 */}
 								{/* 注册 */}
 								<Route exact path="/login" component={Login} />
+								{/* 邮箱注册 */}
+								<Route exact path="/registerMail" component={RegisterMail} />
 								{/* 登录 */}
 								<Route exact path="/register" component={Register} />
 							{/* 视频功能 */}
