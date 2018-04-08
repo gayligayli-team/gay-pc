@@ -4,7 +4,7 @@ import React, { Component } from "react"
 import Header from '../components/util/navmenu'
 import Footer from '../components/util/footer'
 
-import EmailRegister from './entrance/registerMail'
+import MailRegister from './entrance/mail'
 
 
 class Register extends Component{
@@ -19,7 +19,7 @@ class Register extends Component{
 				<div className="userHeader">
 					<img src="https://www.alice47.com/img/rl_top.35edfde.png" alt="" />
 				</div>
-				<EmailRegister />
+				<MailRegister />
 				{/* 尾部 */}
 				<Footer />
 			</div>

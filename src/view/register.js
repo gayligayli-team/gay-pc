@@ -4,8 +4,7 @@ import React, { Component } from "react"
 import Header from '../components/util/navmenu'
 import Footer from '../components/util/footer'
 
-// import UserLogin from './user/login'
-import UserRegister from './user/register'
+import UserRegister from './entrance/register'
 
 
 class Register extends Component{

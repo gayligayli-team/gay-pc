@@ -48,10 +48,12 @@ class RegisterMain extends Component{
 				width: 140,
 			},
 			phonecode: {
-				type: "number",
+				type: "text",
 				name: "phonecode",
 				position: "absolute",
 				value: "",
+				width: 240,
+				max: 6,
 			},
 			agreement: {
 				type: "checkbox",
@@ -63,26 +65,10 @@ class RegisterMain extends Component{
 			},
 		}
 	}
-	aliasChange = e => {
+	emailChange = e => {
 		this.setState({
-			alias: {
-				...this.state.alias,
-				value: e.target.value,
-			}
-		})
-	}
-	passwordChange = e => {
-		this.setState({
-			password: {
-				...this.state.password,
-				value: e.target.value,
-			}
-		})
-	}
-	phoneChange = e => {
-		this.setState({
-			phone: {
-				...this.state.phone,
+			email: {
+				...this.state.email,
 				value: e.target.value,
 			}
 		})
@@ -163,16 +149,20 @@ class RegisterMain extends Component{
 	}
 	fromSubmit = _ => {
 		let data = {
-			name: this.state.alias.value,
-			password: this.state.password.value,
-			phone: this.state.phone.value,
+			email: this.state.email.value,
 			phonecode: this.state.phonecode.value,
 		}
-		let flag = validate.isNull(data.name, '昵称') && validate.nameError(data.name) &&
-		validate.isNull(data.password, '密码') && validate.psdError(data.password) &&
-		validate.isNull(data.phone, '手机号') && validate.phoneError(data.phone) &&
+		let flag = validate.isNull(data.email, '邮箱') && validate.emailError(data.email) &&
 		validate.isNull(data.phonecode, '验证码');
+		// this.props.history.push('/register/mailsent');
 		if(!flag)return;
+		this.props.history.push('/register/checkMail');
+		// {
+		// 	path: '/register/checkMail',
+		// 	params: {
+		// 		email: data.email
+		// 	}
+		// }
 		api({
 			url: 'entrance/register',
 			type: 'POST',
@@ -196,7 +186,7 @@ class RegisterMain extends Component{
 						<h1>注册</h1>
 					</div>
 					<div className="main_from">
-						<Input {...this.state.email} changeValue={this.aliasChange} />
+						<Input {...this.state.email} changeValue={this.emailChange} />
 						<p className="from_email">
 							<Link to='/register'><span>用手机注册&gt;</span></Link>
 						</p>

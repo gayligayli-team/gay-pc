@@ -33,11 +33,41 @@ class RegisterMain extends Component{
 		 * change	|event					Function(Null
 		 */
 		this.state = {
-			email: {
+			alias: {
 				type: "text",
-				name: "email",
-				placeholder: "填写常用邮箱",
+				name: "alias",
+				placeholder: "昵称（例：gay）",
 				value: "",
+				max: 12,
+			},
+			password: {
+				type: "password",
+				name: "pwd",
+				placeholder: "密码（6-18个字符组成，区分大小写）",
+				value: "",
+				max: 18,
+			},
+			phone: {
+				type: "tel",
+				name: "phone",
+				placeholder: "填写常用手机号",
+				value: "",
+				width: 300,
+				max: 11,
+			},
+			area: {
+				type: "tel",
+				name: "area",
+				options: [{
+					text: "中国大陆",
+					value: "86",
+				}, {
+					text: "香港特别行政区",
+					value: "852",
+				}, {
+					text: "澳门特别行政区",
+					value: "853",
+				}],
 			},
 			sendCode: {
 				title: "点击获取",
@@ -58,7 +88,7 @@ class RegisterMain extends Component{
 				checked: false,
 			},
 			submit: {
-				title: "发送验证邮件",
+				title: "注册",
 				disabled: true,
 			},
 		}
@@ -196,9 +226,18 @@ class RegisterMain extends Component{
 						<h1>注册</h1>
 					</div>
 					<div className="main_from">
-						<Input {...this.state.email} changeValue={this.aliasChange} />
+						<Input {...this.state.alias} changeValue={this.aliasChange} />
+						<p className="security_level active">
+							{/* <span>安全级别</span> */}
+						</p>
+						<Input {...this.state.password} changeValue={this.passwordChange} />
+						<p></p>
+						<label className="clear">
+							<Select {...this.state.area} />
+							<Input {...this.state.phone} changeValue={this.phoneChange} />
+						</label>
 						<p className="from_email">
-							<Link to='/register'><span>用手机注册&gt;</span></Link>
+							<Link to='/register/mail'><span>用邮箱注册&gt;</span></Link>
 						</p>
 						<p className="from_phone">
 							<Input {...this.state.phonecode} changeValue={this.phonecodeChange} />

@@ -10,7 +10,7 @@ import App from "./../App"
 import Home from './../view/home'
 
 // User
-import Login from './../view/user'
+import Login from './../view/login'
 import Register from './../view/register'
 import RegisterMail from './../view/registerEmail'
 
@@ -27,12 +27,12 @@ class route extends Component{
 						<Switch>
 
 							{/* 用户功能 */}
-								{/* 注册 */}
-								<Route exact path="/login" component={Login} />
-								{/* 邮箱注册 */}
-								<Route exact path="/registerMail" component={RegisterMail} />
 								{/* 登录 */}
+								<Route exact path="/login" component={Login} />
+								{/* 注册 */}
 								<Route exact path="/register" component={Register} />
+								{/* 邮箱注册 */}
+								<Route exact path="/register/mail" component={RegisterMail} />
 							{/* 视频功能 */}
 							<Route path="/" component={Home} />
 						</Switch>

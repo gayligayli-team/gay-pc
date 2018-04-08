@@ -4,11 +4,10 @@ import React, { Component } from "react"
 import Header from '../components/util/navmenu'
 import Footer from '../components/util/footer'
 
-import UserLogin from './user/login'
-// import UserRegister from './user/register'
+import UserLogin from './entrance/login'
 
 
-class User extends Component{
+class Login extends Component{
 	// constructor(props){
 	// 	super(props)
 	// }
@@ -28,4 +27,4 @@ class User extends Component{
 	}
 }
 
-export default User
+export default Login
