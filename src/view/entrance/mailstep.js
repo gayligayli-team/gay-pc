@@ -33,95 +33,40 @@ class RegisterMain extends Component{
 		 * change	|event					Function(Null
 		 */
 		this.state = {
-			email: {
+			alias: {
 				type: "text",
-				name: "email",
-				placeholder: "填写常用邮箱",
+				name: "alias",
+				placeholder: "昵称（例：gay）",
 				value: "",
+				max: 12,
 			},
-			sendCode: {
-				title: "点击获取",
-				remind: "",
-				disabled: false,
-				css: "phone_send_message",
-				sec: 0,
-				width: 140,
-			},
-			phonecode: {
-				type: "text",
-				name: "phonecode",
-				position: "absolute",
+			password: {
+				type: "password",
+				name: "pwd",
+				placeholder: "密码（6-18个字符组成，区分大小写）",
 				value: "",
-				width: 240,
-				max: 6,
-			},
-			agreement: {
-				type: "checkbox",
-				checked: false,
+				max: 18,
 			},
 			submit: {
-				title: "发送验证邮件",
-				disabled: true,
+				title: "创建账号",
 			},
 		}
 	}
-	emailChange = e => {
+	aliasChange = e => {
 		this.setState({
-			email: {
-				...this.state.email,
+			alias: {
+				...this.state.alias,
 				value: e.target.value,
 			}
 		})
 	}
-	phonecodeChange = e => {
+	passwordChange = e => {
 		this.setState({
-			phonecode: {
-				...this.state.phonecode,
+			password: {
+				...this.state.password,
 				value: e.target.value,
 			}
 		})
-	}
-	changeCheckbox = _ => {
-		this.setState({
-			agreement: {
-				...this.state.agreement,
-				checked: !this.state.agreement.checked
-			},
-			submit: {
-				...this.state.submit,
-				disabled: this.state.agreement.checked
-			}
-		});
-	}
-	sendMessage = _ =>{
-		let data = {
-			phone: this.state.phone.value,
-			// area: this.state.area,
-		}
-		if(!validate.isNull(data.phone, '手机号') || !validate.phoneError(data.phone))return;
-		api({
-			url: 'entrance/sendmsg',
-			type: 'POST',
-			data,
-		})
-		.then(res => {
-			if(res.result === 0){
-				console.log("短信发送成功!");
-				this.setState({
-					sendCode: {
-						...this.state.sendCode,
-						disabled: true,
-						remind: '重新获取验证码',
-						sec: 60,
-					}
-				});
-				this.msgTimeout();
-			}else{
-				console.warn(res);
-			}
-		}).catch(err => {
-			console.log(err);
-		});
 	}
 	msgTimeout = _ => {
 		let sec = this.state.sendCode.sec - 1;
@@ -156,7 +101,8 @@ class RegisterMain extends Component{
 		validate.isNull(data.phonecode, '验证码');
 		// this.props.history.push('/register/mailsent');
 		if(!flag)return;
-		this.props.history.push('/register/mailsent');
+		// this.props.history.push('/register/checkMail');
+		// this.props.history.push('/register/mailStep');
 		// {
 		// 	path: '/register/checkMail',
 		// 	params: {
@@ -186,23 +132,23 @@ class RegisterMain extends Component{
 						<h1>注册</h1>
 					</div>
 					<div className="main_from">
-						<Input {...this.state.email} changeValue={this.emailChange} />
-						<p className="from_email">
-							<Link to='/register'><span>用手机注册&gt;</span></Link>
+						<p>ICON 邮箱验证成功，你的邮箱是: 10086@qq.com</p>
+						<p>
+							<img src="https://static-s.bilibili.com/passport/img/lr_22_03.jpg" />
 						</p>
-						<p className="from_phone">
-							<Input {...this.state.phonecode} changeValue={this.phonecodeChange} />
-							<Button {...this.state.sendCode} click={this.sendMessage} />
+						<p></p>
+						<p></p>
+						<p></p>
+						<p></p>
+						<p></p>
+						<Input {...this.state.alias} changeValue={this.aliasChange} />
+						<p className="security_level active">
+							{/* <span>安全级别</span> */}
 						</p>
-						<p className="agreement clear">
-							<Checkbox {...this.state.agreement} change={this.changeCheckbox} />
-							<span>我已同意<Link to='/login/email'><em>《gayligayli用户使用协议》</em></Link></span>
-						</p>
-						{/* 注册 */}
+						<Input {...this.state.password} changeValue={this.passwordChange} />
+						<p></p>
+						{/* 邮箱注册 */}
 						<Button {...this.state.submit} click={this.fromSubmit} />
-						<p className="from_email">
-							<Link to='/login'><span>已有账号，直接登录&gt;</span></Link>
-						</p>
 					</div>
 				</div>
 			</div>

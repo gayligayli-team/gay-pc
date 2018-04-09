@@ -33,35 +33,8 @@ class RegisterMain extends Component{
 		 * change	|event					Function(Null
 		 */
 		this.state = {
-			email: {
-				type: "text",
-				name: "email",
-				placeholder: "填写常用邮箱",
-				value: "",
-			},
-			sendCode: {
-				title: "点击获取",
-				remind: "",
-				disabled: false,
-				css: "phone_send_message",
-				sec: 0,
-				width: 140,
-			},
-			phonecode: {
-				type: "text",
-				name: "phonecode",
-				position: "absolute",
-				value: "",
-				width: 240,
-				max: 6,
-			},
-			agreement: {
-				type: "checkbox",
-				checked: false,
-			},
 			submit: {
 				title: "发送验证邮件",
-				disabled: true,
 			},
 		}
 	}
@@ -156,7 +129,8 @@ class RegisterMain extends Component{
 		validate.isNull(data.phonecode, '验证码');
 		// this.props.history.push('/register/mailsent');
 		if(!flag)return;
-		this.props.history.push('/register/mailsent');
+		// this.props.history.push('/register/checkMail');
+		this.props.history.push('/register/mailStep');
 		// {
 		// 	path: '/register/checkMail',
 		// 	params: {
@@ -186,23 +160,21 @@ class RegisterMain extends Component{
 						<h1>注册</h1>
 					</div>
 					<div className="main_from">
-						<Input {...this.state.email} changeValue={this.emailChange} />
+						<p>邮件已发送  已向你的邮箱 10086@qq.com 发送了一份验证邮件</p>
+						<p>
+							<img src="https://static-s.bilibili.com/passport/img/lr_33_03.jpg" />
+						</p>
+						<p></p>
+						<p></p>
+						<p></p>
+						<p></p>
+						<p></p>
 						<p className="from_email">
-							<Link to='/register'><span>用手机注册&gt;</span></Link>
+							收不到？
+							<Link to='/register'><span>重新发送验证邮箱></span></Link>
 						</p>
-						<p className="from_phone">
-							<Input {...this.state.phonecode} changeValue={this.phonecodeChange} />
-							<Button {...this.state.sendCode} click={this.sendMessage} />
-						</p>
-						<p className="agreement clear">
-							<Checkbox {...this.state.agreement} change={this.changeCheckbox} />
-							<span>我已同意<Link to='/login/email'><em>《gayligayli用户使用协议》</em></Link></span>
-						</p>
-						{/* 注册 */}
+						{/* 查看验证邮箱 */}
 						<Button {...this.state.submit} click={this.fromSubmit} />
-						<p className="from_email">
-							<Link to='/login'><span>已有账号，直接登录&gt;</span></Link>
-						</p>
 					</div>
 				</div>
 			</div>
