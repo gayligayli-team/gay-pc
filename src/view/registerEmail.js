@@ -19,7 +19,7 @@ class Register extends Component{
 				<div className="userHeader">
 					<img src="https://www.alice47.com/img/rl_top.35edfde.png" alt="" />
 				</div>
-				<MailRegister />
+				<MailRegister {...this.props} />
 				{/* 尾部 */}
 				<Footer />
 			</div>

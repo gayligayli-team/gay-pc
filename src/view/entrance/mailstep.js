@@ -68,47 +68,13 @@ class RegisterMain extends Component{
 			}
 		})
 	}
-	msgTimeout = _ => {
-		let sec = this.state.sendCode.sec - 1;
-		this.clearTimeout = setTimeout(_ => {
-			if(sec > 0){
-				this.setState({
-					sendCode: {
-						...this.state.sendCode,
-						remind: `${sec}秒后重新获取`,
-						sec,
-					}
-				});
-				this.msgTimeout();
-			}else{
-				this.setState({
-					sendCode: {
-						...this.state.sendCode,
-						disabled: false,
-						remind: '',
-						sec: 0,
-					}
-				});
-			}
-		}, 1000);
-	}
 	fromSubmit = _ => {
 		let data = {
-			email: this.state.email.value,
-			phonecode: this.state.phonecode.value,
+			alias: this.state.alias.value,
+			password: this.state.password.value,
 		}
-		let flag = validate.isNull(data.email, '邮箱') && validate.emailError(data.email) &&
-		validate.isNull(data.phonecode, '验证码');
-		// this.props.history.push('/register/mailsent');
-		if(!flag)return;
-		// this.props.history.push('/register/checkMail');
-		// this.props.history.push('/register/mailStep');
-		// {
-		// 	path: '/register/checkMail',
-		// 	params: {
-		// 		email: data.email
-		// 	}
-		// }
+		console.log("注册用户")
+		return;
 		api({
 			url: 'entrance/register',
 			type: 'POST',
@@ -131,24 +97,27 @@ class RegisterMain extends Component{
 					<div className="main_title">
 						<h1>注册</h1>
 					</div>
-					<div className="main_from">
-						<p>ICON 邮箱验证成功，你的邮箱是: 10086@qq.com</p>
-						<p>
-							<img src="https://static-s.bilibili.com/passport/img/lr_22_03.jpg" />
-						</p>
-						<p></p>
-						<p></p>
-						<p></p>
-						<p></p>
-						<p></p>
-						<Input {...this.state.alias} changeValue={this.aliasChange} />
-						<p className="security_level active">
-							{/* <span>安全级别</span> */}
-						</p>
-						<Input {...this.state.password} changeValue={this.passwordChange} />
-						<p></p>
-						{/* 邮箱注册 */}
-						<Button {...this.state.submit} click={this.fromSubmit} />
+					<div className="main_from email_box">
+						<div>
+							<p>ICON 邮箱验证成功，你的邮箱是: <b>10086@qq.com</b></p>
+							<p>
+								<img src="https://static-s.bilibili.com/passport/img/lr_22_03.jpg" />
+							</p>
+							<p></p>
+							<p></p>
+							<p></p>
+							<p></p>
+							<p></p>
+							<p>请输入昵称和密码，创建你的gayligayli账号</p>
+							<Input {...this.state.alias} changeValue={this.aliasChange} />
+							<p className="security_level active">
+								{/* <span>安全级别</span> */}
+							</p>
+							<Input {...this.state.password} changeValue={this.passwordChange} />
+							<p></p>
+							{/* 邮箱注册 */}
+							<Button {...this.state.submit} click={this.fromSubmit} />
+						</div>
 					</div>
 				</div>
 			</div>
