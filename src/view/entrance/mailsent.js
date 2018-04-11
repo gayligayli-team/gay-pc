@@ -58,12 +58,12 @@ class RegisterMain extends Component{
 							<p></p>
 							<p></p>
 							<p></p>
-							<p className="from_email">
+							<p className="from_email center">
 								收不到？
 								<Link to='/register/mail'><span>重新发送验证邮箱></span></Link>
 							</p>
 							{/* 查看验证邮箱 */}
-							<p>
+							<p className="center">
 								<Button {...this.state.submit} click={this.checkmail} />
 							</p>
 						</div>

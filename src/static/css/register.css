@@ -102,6 +102,9 @@
 	width: auto;
 	text-align: center;
 }
-.email_title span{
-	font-size: 18px;
+.email_box .email_title span{
+	font-size: 16px;
+}
+.email_box .center{
+	margin: 0 auto;
 }

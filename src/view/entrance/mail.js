@@ -37,7 +37,7 @@ class RegisterMain extends Component{
 				type: "text",
 				name: "email",
 				placeholder: "填写常用邮箱",
-				value: "10086@qq.com",
+				value: "839191843@qq.com",
 			},
 			sendCode: {
 				title: "123456",
@@ -105,11 +105,6 @@ class RegisterMain extends Component{
 		validate.isNull(data.photocode, '验证码');
 		if(!flag)return;
 		console.log("发送邮件");
-		this.props.history.push({
-			pathname: '/register/mailsent',
-			email: data.email,
-		});
-		return;
 		api({
 			url: 'entrance/sendmail',
 			type: 'POST',
@@ -117,8 +112,10 @@ class RegisterMain extends Component{
 		})
 		.then(res => {
 			if(res.result === 0){
-				this.props.history.push('/register/mailsent');
-				console.log(res.msg);
+				this.props.history.push({
+					pathname: '/register/mailsent',
+					email: data.email,
+				});
 			}else{
 				console.warn(res);
 			}
