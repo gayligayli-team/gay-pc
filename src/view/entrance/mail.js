@@ -37,7 +37,7 @@ class RegisterMain extends Component{
 				type: "text",
 				name: "email",
 				placeholder: "填写常用邮箱",
-				value: "839191843@qq.com",
+				value: "307493394@qq.com",
 			},
 			sendCode: {
 				title: "123456",
@@ -62,6 +62,20 @@ class RegisterMain extends Component{
 				disabled: true,
 			},
 		}
+	}
+	componentWillMount(){
+		api({
+			url: 'captcha',
+		})
+		.then(res => {
+			if(res.result === 0){
+				console.log(res, '验证码图片加载成功');
+			}else{
+				console.warn(res);
+			}
+		}).catch(err => {
+			console.log(err);
+		});
 	}
 	emailChange = e => {
 		this.setState({

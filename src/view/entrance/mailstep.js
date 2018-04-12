@@ -36,7 +36,6 @@ class RegisterMain extends Component{
 			mid: '',
 			email: '',
 			unix: 0,
-			sign: '',
 			alias: {
 				type: "text",
 				name: "alias",
@@ -59,18 +58,20 @@ class RegisterMain extends Component{
 	}
 	componentWillMount(){
 		let {mid, email, time, sign} = this.queryString();
+		validate.emailError(email)&&validate.isNull(mid, '链接超时')&&validate.isNull(time, '链接超时')&&validate.isNull(sign, '链接超时');
 		this.setState({
 			mid,
 			email,
 			unix: time,
-			sign,
 		})
+		document.cookie= `sid=${sign};path=/`;
 	}
 	// 转换地址
 	queryString = _ => {
-		let result = {};
 		let str = this.props.location.search.split('?')[1];
+		if(typeof str === 'undefined')return {};
 		let temp = str.split('&');
+		let result = {};
 		let len = temp.length;
 		for(let i=0; i<len; i++){
 			let [k, v] = temp[i].split('=');
@@ -96,12 +97,11 @@ class RegisterMain extends Component{
 	}
 	// 提交注册
 	fromSubmit = _ => {
-		let {mid, email, unix, sign} = this.state;
+		let {mid, email, unix} = this.state;
 		let data = {
 			mid,
 			email,
 			unix,
-			sign,
 			name: this.state.alias.value,
 			password: this.state.password.value,
 		}
