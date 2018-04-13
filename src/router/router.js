@@ -15,6 +15,9 @@ import Register from './../view/register'
 import RegisterMail from './../view/registerEmail'
 import RegisterMailsent from './../view/registerEmailsent'
 import RegisterMailstep from './../view/registerEmailstep'
+import Resetpassword from './../view/resetpassword'
+
+
 
 
 
@@ -28,7 +31,6 @@ class route extends Component{
 				<Provider store={store}>
 					<App>
 						<Switch>
-
 							{/* 用户功能 */}
 								{/* 登录 */}
 								<Route exact path="/login" component={Login} />
@@ -40,6 +42,8 @@ class route extends Component{
 								<Route exact path="/register/mailsent" component={RegisterMailsent} />
 								{/* 邮箱注册(已验证邮件) */}
 								<Route exact path="/register/mailStep" component={RegisterMailstep} />
+								{/* 找回密码 */}
+								<Route exact path="/resetpwd" component={Resetpassword} />
 							{/* 视频功能 */}
 							<Route path="/" component={Home} />
 						</Switch>

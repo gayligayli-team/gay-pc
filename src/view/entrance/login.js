@@ -157,8 +157,8 @@ class LoginMain extends Component{
 								<span className="other">
 									{/* 
 									<Link to='/help'><em>无法验证？</em></Link>&nbsp;
-									<Link to='/resetpwd'><em>忘记密码？</em></Link>
 									 */}
+									<Link to='/resetpwd'><em>忘记密码？</em></Link>
 								</span>
 							</p>
 							<p className="from_login">
