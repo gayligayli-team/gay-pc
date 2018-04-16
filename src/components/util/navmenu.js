@@ -148,7 +148,7 @@ class LoginHistory extends Component {
 							</div>
 						):
 						(
-							<Link to="/login">
+							<Link to="/entrance/login">
 								<i className="navLogin"></i>
 							</Link>
 						)
@@ -164,7 +164,7 @@ class LoginHistory extends Component {
 			):
 			(
 				<div className="loginHistory fr clear">
-					<Link to="/login">
+					<Link to="/entrance/login">
 						<i className="navLogin"></i>
 					</Link>
 					<span>历史</span>

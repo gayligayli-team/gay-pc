@@ -158,12 +158,12 @@ class LoginMain extends Component{
 									{/* 
 									<Link to='/help'><em>无法验证？</em></Link>&nbsp;
 									 */}
-									<Link to='/resetpwd'><em>忘记密码？</em></Link>
+									<Link to='/entrance/reset'><em>忘记密码？</em></Link>
 								</span>
 							</p>
 							<p className="from_login">
 								<Button {...this.state.login} click={this.fromSubmit} />
-								<Link to='/register'>
+								<Link to='/entrance/register'>
 									<Button {...this.state.register} />
 								</Link>
 							</p>

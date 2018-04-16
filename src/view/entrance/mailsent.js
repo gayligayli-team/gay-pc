@@ -2,8 +2,6 @@ import React, { Component } from "react"
 import { Link } from 'react-router-dom'
 import './../../static/css/register.css'
 
-import api from './../../api/fetch'
-import validate from './../../api/validate'
 
 
 import {
@@ -51,7 +49,7 @@ class RegisterMain extends Component{
 						<div>
 							<p className="email_title">邮件已发送  <span>已向你的邮箱 {email} 发送了一份验证邮件</span></p>
 							<p>
-								<img src="https://static-s.bilibili.com/passport/img/lr_33_03.jpg" />
+								<img src="https://static-s.bilibili.com/passport/img/lr_33_03.jpg" alt="" />
 							</p>
 							<p></p>
 							<p></p>
@@ -60,7 +58,7 @@ class RegisterMain extends Component{
 							<p></p>
 							<p className="from_email center">
 								收不到？
-								<Link to='/register/mail'><span>重新发送验证邮箱></span></Link>
+								<Link to='/entrance/mail'><span>重新发送验证邮箱></span></Link>
 							</p>
 							{/* 查看验证邮箱 */}
 							<p className="center">

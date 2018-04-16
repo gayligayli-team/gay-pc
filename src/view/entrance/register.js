@@ -237,7 +237,7 @@ class RegisterMain extends Component{
 							<Input {...this.state.phone} changeValue={this.phoneChange} />
 						</label>
 						<p className="from_email">
-							<Link to='/register/mail'><span>用邮箱注册&gt;</span></Link>
+							<Link to='/entrance/mail'><span>用邮箱注册&gt;</span></Link>
 						</p>
 						<p className="from_phone">
 							<Input {...this.state.phonecode} changeValue={this.phonecodeChange} />
@@ -245,12 +245,12 @@ class RegisterMain extends Component{
 						</p>
 						<p className="agreement clear">
 							<Checkbox {...this.state.agreement} change={this.changeCheckbox} />
-							<span>我已同意<Link to='/login/email'><em>《gayligayli用户使用协议》</em></Link></span>
+							<span>我已同意<Link to='/entrance/licence'><em>《gayligayli用户使用协议》</em></Link></span>
 						</p>
 						{/* 注册 */}
 						<Button {...this.state.submit} click={this.fromSubmit} />
 						<p className="from_email">
-							<Link to='/login'><span>已有账号，直接登录&gt;</span></Link>
+							<Link to='/entrance/login'><span>已有账号，直接登录&gt;</span></Link>
 						</p>
 					</div>
 				</div>

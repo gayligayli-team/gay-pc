@@ -127,11 +127,11 @@ class RegisterMain extends Component{
 		}
 		let flag = validate.isNull(data.email, '邮箱') && validate.emailError(data.email) &&
 		validate.isNull(data.phonecode, '验证码');
-		// this.props.history.push('/register/mailsent');
+		// this.props.history.push('/entrance/mailsent');
 		if(!flag)return;
-		this.props.history.push('/register/checkMail');
+		this.props.history.push('/entrance/checkMail');
 		// {
-		// 	path: '/register/checkMail',
+		// 	path: '/entrance/checkMail',
 		// 	params: {
 		// 		email: data.email
 		// 	}
@@ -165,7 +165,7 @@ class RegisterMain extends Component{
 						</p>
 						<p className="from_email">
 							收不到？
-							<Link to='/register'><span>重新发送验证邮箱></span></Link>
+							<Link to='/entrance/register'><span>重新发送验证邮箱></span></Link>
 						</p>
 						{/* 查看验证邮箱 */}
 						<Button {...this.state.submit} click={this.fromSubmit} />

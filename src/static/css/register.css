@@ -108,3 +108,17 @@
 .email_box .center{
 	margin: 0 auto;
 }
+
+/* 找回密码 */
+.resetpwd .from_phone{
+	display: none;
+}
+.resetpwd .from_phone input{
+	background-color: #f9fafc;
+}
+.resetpwd .from_phone.active{
+	display: block;
+}
+.resetpwd .hide{
+	display: none;
+}

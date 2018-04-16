@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import { Link } from 'react-router-dom'
 import './../../static/css/register.css'
 
 import api from './../../api/fetch'
@@ -8,8 +7,6 @@ import validate from './../../api/validate'
 
 import {
 	Input,
-	Checkbox,
-	Select,
 	Button,
 } from '../../components/util/from'
 
@@ -54,7 +51,6 @@ class RegisterMain extends Component{
 				title: "创建账号",
 			},
 		}
-		
 	}
 	componentWillMount(){
 		let {mid, email, time, sign} = this.queryString();
@@ -136,7 +132,7 @@ class RegisterMain extends Component{
 						<div>
 							<p>ICON 邮箱验证成功，你的邮箱是: <b>{this.state.email}</b></p>
 							<p>
-								<img src="https://static-s.bilibili.com/passport/img/lr_22_03.jpg" />
+								<img src="https://static-s.bilibili.com/passport/img/lr_22_03.jpg" alt="" />
 							</p>
 							<p></p>
 							<p></p>

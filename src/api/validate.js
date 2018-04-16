@@ -16,6 +16,14 @@ const validate = {
 		}
 		return true;
 	},
+	// 确认密码
+	psdConfirmError: (password, passwordConfirm) => {
+		if(password !== passwordConfirm){
+			console.warn('确认密码不一致');
+			return false;
+		}
+		return true;
+	},
 	// 昵称
 	nameError: (str) => {
 		const reg = /^([a-zA-Z]|[\u4e00-\u9fa5]|[\u0800-\u4e00]){1}([a-zA-Z0-9]|[\u4e00-\u9fa5]|[\u0800-\u4e00]){3,11}$/g;

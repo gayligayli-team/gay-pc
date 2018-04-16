@@ -9,7 +9,6 @@ import validate from './../../api/validate'
 import {
 	Input,
 	Checkbox,
-	Select,
 	Button,
 } from '../../components/util/from'
 
@@ -127,7 +126,7 @@ class RegisterMain extends Component{
 		.then(res => {
 			if(res.result === 0){
 				this.props.history.push({
-					pathname: '/register/mailsent',
+					pathname: '/entrance/mailsent',
 					email: data.email,
 				});
 			}else{
@@ -147,7 +146,7 @@ class RegisterMain extends Component{
 					<div className="main_from">
 						<Input {...this.state.email} changeValue={this.emailChange} />
 						<p className="from_email">
-							<Link to='/register'><span>用手机注册&gt;</span></Link>
+							<Link to='/entrance/register'><span>用手机注册&gt;</span></Link>
 						</p>
 						<p className="from_phone">
 							<Input {...this.state.photocode} changeValue={this.photocodeChange} />
@@ -155,12 +154,12 @@ class RegisterMain extends Component{
 						</p>
 						<p className="agreement clear">
 							<Checkbox {...this.state.agreement} change={this.changeCheckbox} />
-							<span>我已同意<Link to='/login/email'><em>《gayligayli用户使用协议》</em></Link></span>
+							<span>我已同意<Link to='/entrance/licence'><em>《gayligayli用户使用协议》</em></Link></span>
 						</p>
 						{/* 发送注册邮件 */}
 						<Button {...this.state.submit} click={this.fromSubmit} />
 						<p className="from_email">
-							<Link to='/login'><span>已有账号，直接登录&gt;</span></Link>
+							<Link to='/entrance/login'><span>已有账号，直接登录&gt;</span></Link>
 						</p>
 					</div>
 				</div>
