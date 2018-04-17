@@ -52,14 +52,20 @@ class Reset extends Component{
 			submitState: 1,
 			// 1:phone, 0:email
 		}
-		// 登录状态
-		setTimeout(_ => {
-			let loginID = localStorage.getItem('UserID') || sessionStorage.getItem('UserID');
-			let loginMD5 = localStorage.getItem('UserID_ckMD5') || sessionStorage.getItem('UserID_ckMD5');
-			if(loginID&&loginMD5){
-				this.props.history.push('/');
+	}
+	componentWillMount(){
+		api({
+			url: 'captcha',
+		})
+		.then(res => {
+			if(res.result === 0){
+				console.log(res, '验证码图片加载成功');
+			}else{
+				console.warn(res);
 			}
-		}, 500);
+		}).catch(err => {
+			console.log(err);
+		});
 	}
 	phoneChange = e => {
 		this.setState({
@@ -88,28 +94,22 @@ class Reset extends Component{
 	// 短信验证码找回
 	fromPhoneSubmit = _ =>{
 		let data = {
+			dopost: 'mobile_getpwd',
 			phone: this.state.phone.value,
 			photocode: this.state.photocode.value,
 		}
 		let flag = validate.isNull(data.phone, '手机号') && validate.phoneError(data.phone) && validate.isNull(data.photocode, '验证码');
 		if(!flag)return;
 		api({
-			url: 'entrance/sendmsg',
+			url: 'entrance/sendremsg',
 			type: 'POST',
 			data,
 		})
 		.then(res => {
 			if(res.result === 0){
 				console.log("短信发送成功!");
-				this.setState({
-					sendCode: {
-						...this.state.sendCode,
-						disabled: true,
-						remind: '重新获取验证码',
-						sec: 60,
-					}
-				});
-				this.msgTimeout();
+				let mobileKey = res.data.mobileKey;
+				this.props.history.push(`/entrance/resetpwd?mobileKey=${mobileKey}`);
 			}else{
 				console.warn(res);
 			}
@@ -120,15 +120,15 @@ class Reset extends Component{
 	// 邮件找回
 	fromMailSubmit = _ => {
 		let data = {
+			dopost: 'email_getpwd',
 			email: this.state.email.value,
 			photocode: this.state.photocode.value,
 		}
 		let flag = validate.isNull(data.email, '邮箱') && validate.emailError(data.email) &&
 		validate.isNull(data.photocode, '验证码');
 		if(!flag)return;
-		console.log("发送邮件");
 		api({
-			url: 'entrance/sendmail',
+			url: 'entrance/sendremsg',
 			type: 'POST',
 			data,
 		})

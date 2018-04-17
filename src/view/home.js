@@ -13,12 +13,6 @@ import VideoRoom from './main/video_main'
 import NotFound from './../view/404'
 
 class Home extends Component{
-	// constructor(props){
-	// 	super(props)
-	// 	this.state = {
-			
-	// 	}
-	// }
 	render(){
 		return (
 			<div className="home">

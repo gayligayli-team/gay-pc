@@ -11,7 +11,6 @@ import {
 } from '../../components/util/from'
 
 
-
 class Resetpwd extends Component{
 	constructor(props){
 		super(props)
@@ -46,8 +45,7 @@ class Resetpwd extends Component{
 	}
 	componentWillMount(){
 		let {mobileKey, time, sign} = this.queryString();
-		validate.isNull(mobileKey, '链接超时') || (validate.isNull(time, '链接超时') && validate.isNull(sign, '链接超时'));
-		console.log(!!mobileKey);
+		!!mobileKey ? validate.isNull(mobileKey, '链接超时') : (validate.isNull(time, '链接超时') && validate.isNull(sign, '链接超时'));
 		let step = !!mobileKey?1:0;
 		document.cookie = step ? `sid=${mobileKey};path=/` : `sid=${sign};path=/`;
 		this.setState({
@@ -100,10 +98,10 @@ class Resetpwd extends Component{
 			passwordConfirm: this.state.passwordConfirm.value,
 		}
 		!!data.step && (data.phonecode = this.state.phonecode.value) && (data.unix = this.state.unix);
-		let flag = validate.isNull(data.password, '密码') && validate.psdError(data.password) &&
-		validate.isNull(data.password, '确认密码') && validate.psdConfirmError(data.password, data.passwordConfirm) &&
-		!!data.step && validate.isNull(data.phonecode, '验证码');
-		if(!flag)return;
+		let flag = (validate.isNull(data.password, '密码') && validate.psdError(data.password) &&
+		validate.isNull(data.password, '确认密码') && validate.psdConfirmError(data.password, data.passwordConfirm)) ||
+		(!!data.step && validate.isNull(data.phonecode, '验证码'));
+		if(!flag )return;
 		api({
 			url: 'entrance/resetpwd',
 			type: 'POST',
