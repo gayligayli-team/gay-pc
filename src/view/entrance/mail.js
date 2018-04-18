@@ -48,7 +48,7 @@ class RegisterMain extends Component{
 				type: "text",
 				name: "photocode",
 				placeholder: "请输入验证码",
-				value: "123456",
+				value: "",
 				width: 240,
 				max: 6,
 			},
@@ -60,18 +60,25 @@ class RegisterMain extends Component{
 				title: "发送验证邮件",
 				disabled: true,
 			},
+			captchaSrc: '',
 		}
 	}
 	componentWillMount(){
+		this.queryCaptcha();
+	}
+	// 获取验证码
+	queryCaptcha = e => {
 		api({
 			url: 'captcha',
+			file: 'blob',
 		})
-		.then(res => {
-			if(res.result === 0){
-				console.log(res, '验证码图片加载成功');
-			}else{
-				console.warn(res);
-			}
+		.then(json => {
+			let blob=new Blob([json]);
+			// Blob => URL-String
+			let url = URL.createObjectURL(blob);
+			this.setState({
+				captchaSrc: url
+			});
 		}).catch(err => {
 			console.log(err);
 		});
@@ -150,7 +157,7 @@ class RegisterMain extends Component{
 						</p>
 						<p className="from_phone">
 							<Input {...this.state.photocode} changeValue={this.photocodeChange} />
-							<Button {...this.state.sendCode} click={this.sendMessage} />
+							<img onClick={this.queryCaptcha} className="photo_captcha" src={this.state.captchaSrc} alt="" />
 						</p>
 						<p className="agreement clear">
 							<Checkbox {...this.state.agreement} change={this.changeCheckbox} />

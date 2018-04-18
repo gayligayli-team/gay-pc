@@ -122,3 +122,21 @@
 .resetpwd .hide{
 	display: none;
 }
+
+/* 图形验证码 */
+.register_content p.captcha{
+	position: relative;
+	width: 330px;
+	height: 40px;
+	line-height: 40px;
+}
+.photo_captcha{
+	position: absolute;
+	top: 1px;
+	right: 2px;
+	width: 120px;
+	height: 36px;
+	line-height: 36px;
+	border: 1px solid #e8e8e8;
+	font-size: 14px;
+}

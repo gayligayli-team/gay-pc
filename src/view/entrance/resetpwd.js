@@ -38,20 +38,27 @@ class Resetpwd extends Component{
 			submit: {
 				title: "确认修改",
 			},
-			unix: 0,
 			step: 1,
 			// 1:phone, 0:email
 		}
 	}
 	componentWillMount(){
-		let {mobileKey, time, sign} = this.queryString();
-		!!mobileKey ? validate.isNull(mobileKey, '链接超时') : (validate.isNull(time, '链接超时') && validate.isNull(sign, '链接超时'));
-		let step = !!mobileKey?1:0;
-		document.cookie = step ? `sid=${mobileKey};path=/` : `sid=${sign};path=/`;
-		this.setState({
-			unix: time,
-			step,
-		})
+		let {mobileKey, time, id, sign} = this.queryString();
+		if(!!mobileKey){
+			validate.isNull(mobileKey, '链接超时');
+			document.cookie = `key=${mobileKey};path=/`;
+			this.setState({
+				step: 1,
+			});
+		}else{
+			validate.isNull(id, '链接超时') && validate.isNull(sign, '链接超时');
+			document.cookie = `id=${id};path=/`;
+			document.cookie = `unix=${time};path=/`;
+			document.cookie = `sid=${sign};path=/`;
+			this.setState({
+				step: 0,
+			});
+		}
 	}
 	// 转换地址
 	queryString = _ => {
@@ -97,7 +104,7 @@ class Resetpwd extends Component{
 			password: this.state.password.value,
 			passwordConfirm: this.state.passwordConfirm.value,
 		}
-		!!data.step && (data.phonecode = this.state.phonecode.value) && (data.unix = this.state.unix);
+		!!data.step && (data.phonecode = this.state.phonecode.value);
 		let flag = (validate.isNull(data.password, '密码') && validate.psdError(data.password) &&
 		validate.isNull(data.password, '确认密码') && validate.psdConfirmError(data.password, data.passwordConfirm)) ||
 		(!!data.step && validate.isNull(data.phonecode, '验证码'));
@@ -110,6 +117,7 @@ class Resetpwd extends Component{
 		.then(res => {
 			if(res.result === 0){
 				console.log("密码重置成功!");
+				this.props.history.push(`/entrance/login`);
 			}else{
 				console.warn(res);
 			}

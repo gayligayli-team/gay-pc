@@ -33,15 +33,9 @@ class Reset extends Component{
 				type: "text",
 				name: "photocode",
 				placeholder: "验证码",
-				value: "123456",
+				value: "",
 				width: 180,
 				max: 6,
-			},
-			sendCode: {
-				title: "123456",
-				disabled: true,
-				css: "phone_send_message",
-				width: 140,
 			},
 			phoneSubmit: {
 				title: "发送到手机",
@@ -50,19 +44,26 @@ class Reset extends Component{
 				title: "发送到验证邮箱",
 			},
 			submitState: 1,
+			captchaSrc: '',
 			// 1:phone, 0:email
 		}
 	}
 	componentWillMount(){
+		this.queryCaptcha();
+	}
+	// 获取验证码
+	queryCaptcha = e => {
 		api({
 			url: 'captcha',
+			file: 'blob',
 		})
-		.then(res => {
-			if(res.result === 0){
-				console.log(res, '验证码图片加载成功');
-			}else{
-				console.warn(res);
-			}
+		.then(json => {
+			let blob=new Blob([json]);
+			// Blob => URL-String
+			let url = URL.createObjectURL(blob);
+			this.setState({
+				captchaSrc: url
+			});
 		}).catch(err => {
 			console.log(err);
 		});
@@ -153,9 +154,9 @@ class Reset extends Component{
 					<div className={`${this.state.submitState?"active ":""}main_from`}>
 						<Input {...this.state.phone} changeValue={this.phoneChange} />
 						<p></p>
-						<p className="from_phone">
+						<p className="captcha">
 							<Input {...this.state.photocode} changeValue={this.photocodeChange} />
-							<Button {...this.state.sendCode} click={this.sendMessage} />
+							<img onClick={this.queryCaptcha} className="photo_captcha" src={this.state.captchaSrc} alt="" />
 						</p>
 						<p></p>
 						<Button {...this.state.phoneSubmit} click={this.fromPhoneSubmit} />
@@ -168,9 +169,9 @@ class Reset extends Component{
 					<div className={`${!this.state.submitState?"active ":""}main_from`}>
 						<Input {...this.state.email} changeValue={this.emailChange} />
 						<p></p>
-						<p className="from_phone">
+						<p className="captcha">
 							<Input {...this.state.photocode} changeValue={this.photocodeChange} />
-							<Button {...this.state.sendCode} click={this.sendMessage} />
+							<img onClick={this.queryCaptcha} className="photo_captcha" src={this.state.captchaSrc} alt="" />
 						</p>
 						<p></p>
 						<Button {...this.state.emailSubmit} click={this.fromMailSubmit} />

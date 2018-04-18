@@ -1,4 +1,6 @@
 /*
+ * file 处理类型(default: JSON)
+ * 
  * response.text()				字符串(String
  * response.json()				JSON
  * response.blob()				二进制流(媒体Media|audio、图片image
@@ -7,7 +9,8 @@
 const api = function({
 		url = '',
 		type = 'GET',
-		data = {}
+		data = {},
+		file = 'json'
 	}){
 	// const host = 'https://www.alice47.com/api/';
 	const host = 'http://127.0.0.1:14000/api/';
@@ -39,7 +42,11 @@ const api = function({
 	}
 	return fetch(host + url, option)
 		.then(response => {
-			return response.json()
+			if(file === 'blob'){
+				return response.blob();
+			}else{
+				return response.json();
+			}
 		}).then(json => {
 			return json
 		}).catch(err => {
