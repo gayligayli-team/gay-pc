@@ -51,7 +51,9 @@ class LoginMain extends Component{
 			},
 			imgValid: {
 				x: 120,
-				y: 60,
+				y: 0,
+				cover: '',
+				bg: '',
 			},
 		}
 		// 登录状态
@@ -62,6 +64,25 @@ class LoginMain extends Component{
 				this.props.history.push('/');
 			}
 		}, 500);
+	}
+	componentWillMount(){
+		this.queryPictures();
+	}
+	// 获取验证码
+	queryPictures = _ => {
+		api({
+			url: 'pictures',
+		})
+		.then(json => {
+			this.setState({
+				imgValid: {
+					...json.data,
+				}
+			})
+			console.log(json.data.x);
+		}).catch(err => {
+			console.log(err);
+		});
 	}
 	updateValidate = token => {
 		this.setState({
@@ -96,7 +117,6 @@ class LoginMain extends Component{
 		});
 	}
 	fromSubmit = _ => {
-		// this.props.history.push('/');
 		let data = {
 			phone: this.state.id.value,
 			password: this.state.password.value,

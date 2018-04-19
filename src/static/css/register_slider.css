@@ -67,7 +67,7 @@
 .reg_slider_obstruct{
 	position: absolute;
 	top: 0;
-	margin: 16px 20px 0 7px;
+	margin: 16px 20px 0 11px;
 	width: 170px;
 	height: 126px;
 }
@@ -81,7 +81,7 @@
 	box-shadow: 0 0 8px 2px #333;
 	border: 1px solid #c3c3c3;
 	border-radius: 2px;
-	background-position: -7px -1px;
+	/*background-position: -7px -1px;*/
 	z-index: 120;
 	/* transition:  all .1s linear; */
 }

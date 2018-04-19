@@ -52,10 +52,14 @@ class Reset extends Component{
 		this.queryCaptcha();
 	}
 	// 获取验证码
-	queryCaptcha = e => {
+	queryCaptcha = _ => {
+		let t = Math.random();
 		api({
 			url: 'captcha',
 			file: 'blob',
+			data: {
+				t,
+			},
 		})
 		.then(json => {
 			let blob=new Blob([json]);

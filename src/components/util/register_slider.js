@@ -19,7 +19,6 @@ class RegSlider extends Component{
 			foucsStatus: false,
 		}
 	}
-	url = "https://www.alice47.com/validate_img/0.png";
 	sliderStart = e => {
 		e.stopPropagation();
 		e.preventDefault();
@@ -64,14 +63,15 @@ class RegSlider extends Component{
 	}
 	validate = _ => {
 		let _move = this.state.blockRate*1.7;
-		let _max = this.props.x+5;
-		let _min = this.props.x-5;
+		let _max = +this.props.x+3;
+		let _min = this.props.x-3;
+		console.log(_min+':'+_move+':'+_max);
 		if(_move>_min&&_move<_max){
 			this.setState({
 				blockRate: this.props.x/1.7,
 				validState: true,
 			});
-			this.props.validing(this.props.x);
+			this.props.validing(`${this.props.x}_${this.props.y}`);
 			console.log("验证成功");
 		}else{
 			setTimeout(_ =>{
@@ -125,27 +125,12 @@ class RegSlider extends Component{
 					style={{display: this.state.imageStatus?"block":"none"}}
 					className="reg_slider_image">
 						<div className="reg_slider_bg"></div>
-						<img src={this.url} alt="" />
+						<img src={this.props.bg} alt="" />
 						<div className="reg_slider_obstruct">
-							<u
-							style={{left: this.props.x + "px",
-							top: this.props.y + "px",
-							backgroundPositionX: -this.props.x-7 + "px",
-							backgroundPositionY: -this.props.y-1 + "px"}}
-							className=""></u>
-							<u
-							style={{left: this.props.x + "px",
-							top: this.props.y + "px",
-							backgroundPositionX: -this.props.x-7 + "px",
-							backgroundPositionY: -this.props.y-1 + "px",
-							backgroundImage: `url(${this.url})`}}
-							className="block_layer"></u>
 							<i
 							style={{left: this.state.blockRate + "%",
 							top: this.props.y + "px",
-							backgroundPositionX: -this.props.x-7 + "px",
-							backgroundPositionY: -this.props.y-1 + "px",
-							backgroundImage: `url(${this.url})`}}
+							backgroundImage: `url(${this.props.cover})`}}
 							className=""></i>
 						</div>
 					</div>
