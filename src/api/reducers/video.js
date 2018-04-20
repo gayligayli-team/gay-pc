@@ -1,4 +1,4 @@
-const reducer = function(state = {
+export const video = function(state = {
 	videoDetail: {},
 }, action){
 	const { type, data } = action;
@@ -15,4 +15,5 @@ const reducer = function(state = {
 			}
 	}
 }
-export default reducer
+
+// export default reducer

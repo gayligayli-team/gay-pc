@@ -68,9 +68,13 @@ class RegisterMain extends Component{
 	}
 	// 获取验证码
 	queryCaptcha = e => {
+		let t = Math.random();
 		api({
 			url: 'captcha',
 			file: 'blob',
+			data: {
+				t,
+			},
 		})
 		.then(json => {
 			let blob=new Blob([json]);

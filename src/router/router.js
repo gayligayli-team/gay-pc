@@ -12,6 +12,9 @@ import Home from './../view/home'
 // Entrance
 import Entrance from './../view/entrance'
 
+// store.subscribe(() => {
+//   console.log('store发生了变化');
+// });
 
 
 class route extends Component{

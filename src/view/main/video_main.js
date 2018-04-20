@@ -11,11 +11,14 @@ import Play from '../../components/home/videoplay'
 
 
 // mapStateToProps
-function mapStateToProps(state){
+const mapStateToProps =  state => {
 	return {
-		videoDetail: state.videoDetail,
+		videoDetail: {
+			...state.video,
+		}
 	}
 }
+
 
 // mapDispatchToProps
 function mapDispatchToProps(dispatch){
@@ -167,11 +170,9 @@ class VideoRoomUI extends Component{
 
 
 
-
-
 const VideoRoom = connect(
 	mapStateToProps,
-	mapDispatchToProps,
+	mapDispatchToProps
 )(VideoRoomUI)
 
 export default VideoRoom

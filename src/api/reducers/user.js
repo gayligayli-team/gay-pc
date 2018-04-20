@@ -27,7 +27,7 @@ const defaultState = {
 	bangumiList: [],
 }
 
-const reducer = (state = defaultState, action) => {
+export const user = (state = defaultState, action) => {
 	const { type, data } = action;
 	switch (type){
 		case 'LOADING_RECOMMEND':
@@ -56,12 +56,11 @@ const reducer = (state = defaultState, action) => {
 				...state,
 				bangumiList: data,
 			}
-
 		default:
 			return {
-				state,
+				...state,
 			}
 	}
 }
 
-export default reducer
+// export default reducer

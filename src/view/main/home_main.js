@@ -15,14 +15,9 @@ import {
 
 
 // mapStateToProps
-function mapStateToProps(state){
+const mapStateToProps = state => {
 	return {
-		recommendList: state.recommendList,
-		recommendBox: state.recommendBox,
-		columnConfig: state.columnConfig,
-		columnList: state.columnList,
-		rankList: state.rankList,
-		bangumiList: state.bangumiList,
+		...state.user
 	}
 }
 
@@ -112,7 +107,6 @@ class HomeMain extends Component{
 			rankList,
 			bangumiList,
 		} = this.props
-		console.log(columnConfig);
 		return (
 			<div>
 				<div className="main">
