@@ -5,7 +5,28 @@ const update_column_config = {
 	type: 'LOADING_COLUMN_CONFIG'
 }
 const update_column_list = {
-	type: 'LOADING_COLUMN_LIST'
+	animate: {type: 'LOADING_COLUMN_ANIMATE_LIST'},
+	bangumi: {type: 'LOADING_COLUMN_BANGUMI_LIST'},
+	bangumiWeek: {type: 'LOADING_COLUMN_BANGUMIWEEK_LIST'},
+	bangumiCN: {type: 'LOADING_COLUMN_BANGUMICN_LIST'},
+	bangumiCNWeek: {type: 'LOADING_COLUMN_BANGUMICNWEEK_LIST'},
+	music: {type: 'LOADING_COLUMN_MUSIC_LIST'},
+	dance: {type: 'LOADING_COLUMN_DANCE_LIST'},
+	game: {type: 'LOADING_COLUMN_GAME_LIST'},
+	technology: {type: 'LOADING_COLUMN_TECHNOLOGY_LIST'},
+	life: {type: 'LOADING_COLUMN_LIFE_LIST'},
+	kichiku: {type: 'LOADING_COLUMN_KICHIKU_LIST'},
+	fashion: {type: 'LOADING_COLUMN_FASHION_LIST'},
+	ad: {type: 'LOADING_COLUMN_AD_LIST'},
+	happy: {type: 'LOADING_COLUMN_HAPPY_LIST'},
+	movie: {type: 'LOADING_COLUMN_MOVIE_LIST'},
+	teleplay: {type: 'LOADING_COLUMN_TELEPLAY_LIST'},
+	cinephile: {type: 'LOADING_COLUMN_CINEPHILE_LIST'},
+	documentary: {type: 'LOADING_COLUMN_DOCUMENTARY_LIST'},
+	specialRecommod: {type: 'LOADING_COLUMN_SPECIALRECOMMOD_LIST'},
+}
+const update_column_lists = {
+	type: 'LOADING_COLUMN_LISTS'
 }
 const update_rank_list = {
 	type: 'LOADING_RANK_LIST'
@@ -24,6 +45,7 @@ export default {
 	update_recommend,
 	update_column_config,
 	update_column_list,
+	update_column_lists,
 	update_rank_list,
 	update_bangumi_list,
 

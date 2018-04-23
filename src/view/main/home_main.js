@@ -17,7 +17,7 @@ import {
 // mapStateToProps
 const mapStateToProps = state => {
 	return {
-		...state.user
+		...state.home
 	}
 }
 
@@ -45,11 +45,25 @@ function mapDispatchToProps(dispatch){
 				})
 			})
 		},
-		updateColumnList: _ => {
+		updateColumnList: (type, name) => {
+			api({
+				url:'getColumnList',
+				data: {
+					type,
+				}
+			})
+			.then(res => {
+				return dispatch({
+					...action.update_column_list[name],
+					data: res.data.list,
+				})
+			});
+		},
+		updateColumnLists: _ => {
 			api({url:'getColumnList'})
 			.then(res => {
 				return dispatch({
-					...action.update_column_list,
+					...action.update_column_lists,
 					data: res.data.list,
 				})
 			});
@@ -78,11 +92,94 @@ function mapDispatchToProps(dispatch){
 
 // 内容
 class HomeMain extends Component{
+	constructor(props){
+		super(props)
+		this.state = {
+			sideList: [
+				{
+				// 	sort: -1,
+				// 	text: "推广"
+				// },{
+				// 	sort: -1,
+				// 	text: "直播"
+				// },{
+					sort: 1,
+					text: "动画",
+					name: "animate"
+				},{
+					sort: 2,
+					text: "番剧",
+					name: "bangumi"
+				},{
+					sort: 3,
+					text: "国创",
+					name: "bangumiCN"
+				},{
+					sort: 4,
+					text: "音乐",
+					name: "music"
+				},{
+					sort: 5,
+					text: "舞蹈",
+					name: "dance"
+				},{
+					sort: 6,
+					text: "游戏",
+					name: "game"
+				},{
+					sort: 7,
+					text: "科技",
+					name: "technology"
+				},{
+					sort: 8,
+					text: "生活",
+					name: "life"
+				},{
+					sort: 9,
+					text: "鬼畜",
+					name: "kichiku"
+				},{
+					sort: 10,
+					text: "时尚",
+					name: "fashion"
+				},{
+					sort: 11,
+					text: "广告",
+					name: "ad"
+				},{
+					sort: 12,
+					text: "娱乐",
+					name: "happy"
+				},{
+					sort: 13,
+					text: "电影",
+					name: "movie"
+				},{
+					sort: 14,
+					text: "TV剧",
+					name: "teleplay"
+				},{
+					sort: 15,
+					text: "影视",
+					name: "cinephile"
+				},{
+					sort: 16,
+					text: "纪录片",
+					name: "documentary"
+				// },{
+				// 	sort: -1,
+				// 	text: "推荐"
+				},
+			],
+			activeSort: 0
+		}
+	}
 	componentDidMount(){
 		const {
 			updateRecommend,
 			updateColumnConfig,
 			updateColumnList,
+			updateColumnLists,
 			updateRankList,
 			updateBangumiList,
 		} = this.props
@@ -92,11 +189,15 @@ class HomeMain extends Component{
 		// 加载专栏配置
 		updateColumnConfig()
 		// 加载视频专栏列表
-		updateColumnList()
+		updateColumnLists()
 		// 加载视频专栏列表
 		updateRankList()
 		// 加载番剧专栏列表
 		updateBangumiList()
+
+		this.state.sideList.forEach(e => {
+			updateColumnList(e.sort, e.name)
+		});
 	}
 	render(){
 		const {
@@ -104,6 +205,7 @@ class HomeMain extends Component{
 			recommendBox,
 			columnConfig,
 			columnList,
+			columnLists,
 			rankList,
 			bangumiList,
 		} = this.props
@@ -122,7 +224,7 @@ class HomeMain extends Component{
 					{/* popularize */}
 					{/* <div className="popularize clear">
 						<div className="fl">
-							<WrapColumn title={columnConfig.animate} list={columnList} />
+							<WrapColumn title={columnConfig.animate} list={columnLists} />
 						</div>
 						<div className="fr">
 							<WrapRank list={rankList} />
@@ -143,12 +245,13 @@ class HomeMain extends Component{
 					{/* animate */}
 					<div className="animate clear">
 						<div className="fl">
-							<WrapColumn title={columnConfig.animate} list={columnList} />
+							<WrapColumn title={columnConfig.animate} list={columnList.animate} />
 						</div>
 						<div className="fr">
 							<WrapRank list={rankList} />
 						</div>
 					</div>
+
 					{/* bangumi */}
 						{/* WrapDynamicColumn */}
 						<div className="bangumi clear">
@@ -161,7 +264,7 @@ class HomeMain extends Component{
 						</div>
 					<div className="bangumi clear">
 						<div className="fl">
-							<WrapColumn title={columnConfig.bangumi} list={columnList} />
+							<WrapColumn title={columnConfig.bangumi} list={columnList.bangumi} />
 						</div>
 						<div className="fr">
 							<WrapRank list={rankList} />
@@ -180,7 +283,7 @@ class HomeMain extends Component{
 						</div>
 					<div className="bangumiCN clear">
 						<div className="fl">
-							<WrapColumn title={columnConfig.bangumiCN} list={columnList} />
+							<WrapColumn title={columnConfig.bangumiCN} list={columnList.bangumiCN} />
 						</div>
 						<div className="fr">
 							<WrapRank list={rankList} />
@@ -190,7 +293,7 @@ class HomeMain extends Component{
 					{/* music */}
 					<div className="music clear">
 						<div className="fl">
-							<WrapColumn title={columnConfig.music} list={columnList} />
+							<WrapColumn title={columnConfig.music} list={columnList.music} />
 						</div>
 						<div className="fr">
 							<WrapRank list={rankList} />
@@ -200,7 +303,7 @@ class HomeMain extends Component{
 					{/* dance */}
 					<div className="dance clear">
 						<div className="fl">
-							<WrapColumn title={columnConfig.dance} list={columnList} />
+							<WrapColumn title={columnConfig.dance} list={columnList.dance} />
 						</div>
 						<div className="fr">
 							<WrapRank list={rankList} />
@@ -210,7 +313,7 @@ class HomeMain extends Component{
 					{/* game */}
 					<div className="game clear">
 						<div className="fl">
-							<WrapColumn title={columnConfig.game} list={columnList} />
+							<WrapColumn title={columnConfig.game} list={columnList.game} />
 						</div>
 						<div className="fr">
 							<WrapRank list={rankList} />
@@ -220,7 +323,7 @@ class HomeMain extends Component{
 					{/* technology */}
 					<div className="technology clear">
 						<div className="fl">
-							<WrapColumn title={columnConfig.technology} list={columnList} />
+							<WrapColumn title={columnConfig.technology} list={columnList.technology} />
 						</div>
 						<div className="fr">
 							<WrapRank list={rankList} />
@@ -230,7 +333,7 @@ class HomeMain extends Component{
 					{/* life */}
 					<div className="life clear">
 						<div className="fl">
-							<WrapColumn title={columnConfig.life} list={columnList} />
+							<WrapColumn title={columnConfig.life} list={columnList.life} />
 						</div>
 						<div className="fr">
 							<WrapRank list={rankList} />
@@ -240,7 +343,7 @@ class HomeMain extends Component{
 					{/* kichiku */}
 					<div className="kichiku clear">
 						<div className="fl">
-							<WrapColumn title={columnConfig.kichiku} list={columnList} />
+							<WrapColumn title={columnConfig.kichiku} list={columnList.kichiku} />
 						</div>
 						<div className="fr">
 							<WrapRank list={rankList} />
@@ -250,7 +353,7 @@ class HomeMain extends Component{
 					{/* fashion */}
 					<div className="fashion clear">
 						<div className="fl">
-							<WrapColumn title={columnConfig.fashion} list={columnList} />
+							<WrapColumn title={columnConfig.fashion} list={columnList.fashion} />
 						</div>
 						<div className="fr">
 							<WrapRank list={rankList} />
@@ -260,7 +363,7 @@ class HomeMain extends Component{
 					{/* advertisement */}
 					<div className="ad clear">
 						<div className="fl">
-							<WrapColumn title={columnConfig.ad} list={columnList} />
+							<WrapColumn title={columnConfig.ad} list={columnList.ad} />
 						</div>
 						<div className="fr">
 							<WrapRank list={rankList} />
@@ -270,7 +373,7 @@ class HomeMain extends Component{
 					{/* happy */}
 					<div className="happy clear">
 						<div className="fl">
-							<WrapColumn title={columnConfig.happy} list={columnList} />
+							<WrapColumn title={columnConfig.happy} list={columnList.happy} />
 						</div>
 						<div className="fr">
 							<WrapRank list={rankList} />
@@ -280,7 +383,7 @@ class HomeMain extends Component{
 					{/* movie */}
 					<div className="movie clear">
 						<div className="fl">
-							<WrapColumn title={columnConfig.movie} list={columnList} />
+							<WrapColumn title={columnConfig.movie} list={columnList.movie} />
 						</div>
 						<div className="fr">
 							<WrapRank list={rankList} />
@@ -290,7 +393,7 @@ class HomeMain extends Component{
 					{/* teleplay */}
 					<div className="teleplay clear">
 						<div className="fl">
-							<WrapColumn title={columnConfig.teleplay} list={columnList} />
+							<WrapColumn title={columnConfig.teleplay} list={columnList.teleplay} />
 						</div>
 						<div className="fr">
 							<WrapRank list={rankList} />
@@ -300,7 +403,7 @@ class HomeMain extends Component{
 					{/* cinephile */}
 					<div className="cinephile clear">
 						<div className="fl">
-							<WrapColumn title={columnConfig.cinephile} list={columnList} />
+							<WrapColumn title={columnConfig.cinephile} list={columnList.cinephile} />
 						</div>
 						<div className="fr">
 							<WrapRank list={rankList} />
@@ -310,7 +413,7 @@ class HomeMain extends Component{
 					{/* documentary */}
 					<div className="documentary clear">
 						<div className="fl">
-							<WrapColumn title={columnConfig.documentary} list={columnList} />
+							<WrapColumn title={columnConfig.documentary} list={columnList.documentary} />
 						</div>
 						<div className="fr">
 							<WrapRank list={rankList} />
@@ -320,12 +423,12 @@ class HomeMain extends Component{
 					{/* specialRecommod */}
 					<div className="specialRecommod clear">
 						<div className="fl">
-							<WrapColumn title={columnConfig.specialRecommod} list={columnList} />
+							<WrapColumn title={columnConfig.specialRecommod} list={columnLists} />
 						</div>
 					</div>
 				</div>
 				{/* 侧边 */}
-				<SideMenu />
+				<SideMenu list={this.state.sideList} />
 			</div>
 		)
 	}
@@ -517,72 +620,6 @@ class Banner extends Component{
 
 // 侧边导航(side
 class SideMenu extends Component{
-	constructor(props){
-		super(props)
-		this.state = {
-			sideList: [
-				{
-				// 	sort: -1,
-				// 	text: "推广"
-				// },{
-				// 	sort: -1,
-				// 	text: "直播"
-				// },{
-					sort: 1,
-					text: "动画"
-				},{
-					sort: 2,
-					text: "番剧"
-				},{
-					sort: 3,
-					text: "国创"
-				},{
-					sort: 4,
-					text: "音乐"
-				},{
-					sort: 5,
-					text: "舞蹈"
-				},{
-					sort: 6,
-					text: "游戏"
-				},{
-					sort: 7,
-					text: "科技"
-				},{
-					sort: 8,
-					text: "生活"
-				},{
-					sort: 9,
-					text: "鬼畜"
-				},{
-					sort: 10,
-					text: "时尚"
-				},{
-					sort: 11,
-					text: "广告"
-				},{
-					sort: 12,
-					text: "娱乐"
-				},{
-					sort: 13,
-					text: "电影"
-				},{
-					sort: 14,
-					text: "TV剧"
-				},{
-					sort: 15,
-					text: "影视"
-				},{
-					sort: 16,
-					text: "纪录片"
-				// },{
-				// 	sort: -1,
-				// 	text: "推荐"
-				},
-			],
-			activeSort: 0
-		}
-	}
 	scrollAnchor = e => {
 		const arr = ["", 
 			"icon_animate",
@@ -619,12 +656,12 @@ class SideMenu extends Component{
 		return (
 			<div className="sideMenu">
 				<ul className="clear">
-					{this.state.sideList.map((e, index) => (
+					{this.props.list.map((e, index) => (
 						<li
 						 key={index+1}
 						 onClick={this.scrollAnchor}
 						 name={e.sort}
-						 className={this.state.activeSort===e.sort?"active":""}>{e.text}</li>
+						 className={this.props.activeSort===e.sort?"active":""}>{e.text}</li>
 					))}
 					{/* <li>排序</li> */}
 					<li onClick={this.scrollTop}>TOP</li>
@@ -633,6 +670,7 @@ class SideMenu extends Component{
 		)
 	}
 }
+
 const Main = connect(
 	mapStateToProps,
 	mapDispatchToProps
