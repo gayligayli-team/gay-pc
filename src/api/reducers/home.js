@@ -44,7 +44,29 @@ const defaultState = {
 		specialRecommod: [],
 	},
 	columnLists: [],
-	rankList: [],
+	rankList: {
+		animate: [],
+		bangumi: [],
+		bangumiWeek: [],
+		bangumiCN: [],
+		bangumiCNWeek: [],
+		music: [],
+		dance: [],
+		game: [],
+		technology: [],
+		life: [],
+		kichiku: [],
+		fashion: [],
+		ad: [],
+		happy: [],
+		movie: [],
+		teleplay: [],
+		cinephile: [],
+		documentary: [],
+		specialRecommod: [],
+
+		rankLists: [],
+	},
 	bangumiList: [],
 }
 
@@ -62,7 +84,7 @@ export const home = (state = defaultState, action) => {
 				...state,
 				columnConfig: data,
 			}
-
+		// 合并栏目列表
 		case 'LOADING_COLUMN_ANIMATE_LIST':
 			return {
 				...state,
@@ -207,17 +229,161 @@ export const home = (state = defaultState, action) => {
 					documentary: data,
 				},
 			}
-
-		case 'LOADING_COLUMN_LISTS':
+		// 合并排行列表
+		case 'LOADING_RANK_ANIMATE_LIST':
 			return {
 				...state,
-				columnLists: data,
+				rankList: {
+					...state.rankList,
+					animate: data,
+				},
 			}
-		case 'LOADING_RANK_LIST':
+		case 'LOADING_RANK_BANGUMI_LIST':
 			return {
 				...state,
-				rankList: data,
+				rankList: {
+					...state.rankList,
+					bangumi: data,
+				},
 			}
+		case 'LOADING_RANK_BANGUMIWEEK_LIST':
+			return {
+				...state,
+				rankList: {
+					...state.rankList,
+					bangumiWeek: data,
+				},
+			}
+		case 'LOADING_RANK_BANGUMICN_LIST':
+			return {
+				...state,
+				rankList: {
+					...state.rankList,
+					bangumiCN: data,
+				},
+			}
+		case 'LOADING_RANK_BANGUMICNWEEK_LIST':
+			return {
+				...state,
+				rankList: {
+					...state.rankList,
+					bangumiCNWeek: data,
+				},
+			}
+		case 'LOADING_RANK_MUSIC_LIST':
+			return {
+				...state,
+				rankList: {
+					...state.rankList,
+					music: data,
+				},
+			}
+		case 'LOADING_RANK_DANCE_LIST':
+			return {
+				...state,
+				rankList: {
+					...state.rankList,
+					dance: data,
+				},
+			}
+		case 'LOADING_RANK_GAME_LIST':
+			return {
+				...state,
+				rankList: {
+					...state.rankList,
+					game: data,
+				},
+			}
+		case 'LOADING_RANK_TECHNOLOGY_LIST':
+			return {
+				...state,
+				rankList: {
+					...state.rankList,
+					technology: data,
+				},
+			}
+		case 'LOADING_RANK_LIFE_LIST':
+			return {
+				...state,
+				rankList: {
+					...state.rankList,
+					life: data,
+				},
+			}
+		case 'LOADING_RANK_KICHIKU_LIST':
+			return {
+				...state,
+				rankList: {
+					...state.rankList,
+					kichiku: data,
+				},
+			}
+		case 'LOADING_RANK_FASHION_LIST':
+			return {
+				...state,
+				rankList: {
+					...state.rankList,
+					fashion: data,
+				},
+			}
+		case 'LOADING_RANK_AD_LIST':
+			return {
+				...state,
+				rankList: {
+					...state.rankList,
+					ad: data,
+				},
+			}
+		case 'LOADING_RANK_HAPPY_LIST':
+			return {
+				...state,
+				rankList: {
+					...state.rankList,
+					happy: data,
+				},
+			}
+		case 'LOADING_RANK_MOVIE_LIST':
+			return {
+				...state,
+				rankList: {
+					...state.rankList,
+					movie: data,
+				},
+			}
+		case 'LOADING_RANK_TELEPLAY_LIST':
+			return {
+				...state,
+				rankList: {
+					...state.rankList,
+					teleplay: data,
+				},
+			}
+		case 'LOADING_RANK_CINEPHILE_LIST':
+			return {
+				...state,
+				rankList: {
+					...state.rankList,
+					cinephile: data,
+				},
+			}
+		case 'LOADING_RANK_DOCUMENTARY_LIST':
+			return {
+				...state,
+				rankList: {
+					...state.rankList,
+					documentary: data,
+				},
+			}
+		// case 'LOADING_COLUMN_LISTS':
+		// 	return {
+		// 		...state,
+		// 		columnLists: data,
+		// 	}
+		// case 'LOADING_RANK_LIST':
+		// 	return {
+		// 		...state,
+		// 		rankList: data,
+		// 	}
 		case 'LOADING_BANGUMI_LIST':
 			return {
 				...state,

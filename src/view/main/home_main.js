@@ -59,20 +59,16 @@ function mapDispatchToProps(dispatch){
 				})
 			});
 		},
-		updateColumnLists: _ => {
-			api({url:'getColumnList'})
+		updateRankList: (type, name) => {
+			api({
+				url:'getRankList',
+				data: {
+					type,
+				}
+			})
 			.then(res => {
 				return dispatch({
-					...action.update_column_lists,
-					data: res.data.list,
-				})
-			});
-		},
-		updateRankList: _ => {
-			api({url:'getRankList'})
-			.then(res => {
-				return dispatch({
-					...action.update_rank_list,
+					...action.update_rank_list[name],
 					data: res.data.list,
 				})
 			});
@@ -179,7 +175,6 @@ class HomeMain extends Component{
 			updateRecommend,
 			updateColumnConfig,
 			updateColumnList,
-			updateColumnLists,
 			updateRankList,
 			updateBangumiList,
 		} = this.props
@@ -189,15 +184,16 @@ class HomeMain extends Component{
 		// 加载专栏配置
 		updateColumnConfig()
 		// 加载视频专栏列表
-		updateColumnLists()
-		// 加载视频专栏列表
-		updateRankList()
-		// 加载番剧专栏列表
-		updateBangumiList()
-
 		this.state.sideList.forEach(e => {
 			updateColumnList(e.sort, e.name)
 		});
+		// 加载视频专栏列表
+		this.state.sideList.forEach(e => {
+			updateRankList(e.sort, e.name)
+		});
+		// 加载番剧专栏列表
+		updateBangumiList()
+
 	}
 	render(){
 		const {
@@ -205,7 +201,6 @@ class HomeMain extends Component{
 			recommendBox,
 			columnConfig,
 			columnList,
-			columnLists,
 			rankList,
 			bangumiList,
 		} = this.props
@@ -224,10 +219,10 @@ class HomeMain extends Component{
 					{/* popularize */}
 					{/* <div className="popularize clear">
 						<div className="fl">
-							<WrapColumn title={columnConfig.animate} list={columnLists} />
+							<WrapColumn title={columnConfig.animate} list={columnList.animate} />
 						</div>
 						<div className="fr">
-							<WrapRank list={rankList} />
+							<WrapRank list={rankList.animate} />
 						</div>
 					</div> */}
 					{/* banner */}
@@ -235,10 +230,10 @@ class HomeMain extends Component{
 					{/* live */}
 					{/* <div className="liveBroadcast clear">
 						<div className="fl">
-							<WrapColumn title={this.state.dance} />
+							<WrapColumn title={columnConfig.live} />
 						</div>
 						<div className="fr">
-							<WrapRank list={rankList} />
+							<WrapRank list={rankList.live} />
 						</div>
 					</div>*/}
 
@@ -248,7 +243,7 @@ class HomeMain extends Component{
 							<WrapColumn title={columnConfig.animate} list={columnList.animate} />
 						</div>
 						<div className="fr">
-							<WrapRank list={rankList} />
+							<WrapRank list={rankList.animate} />
 						</div>
 					</div>
 
@@ -259,7 +254,7 @@ class HomeMain extends Component{
 								<WrapDynamicColumn dynamicColoumn={columnConfig.bangumiWeek} list={bangumiList} />
 							</div>
 							<div className="fr">
-								<WrapRank list={rankList} />
+								<WrapRank list={rankList.rankLists} />
 							</div>
 						</div>
 					<div className="bangumi clear">
@@ -267,7 +262,7 @@ class HomeMain extends Component{
 							<WrapColumn title={columnConfig.bangumi} list={columnList.bangumi} />
 						</div>
 						<div className="fr">
-							<WrapRank list={rankList} />
+							<WrapRank list={rankList.bangumi} />
 						</div>
 					</div>
 
@@ -278,7 +273,7 @@ class HomeMain extends Component{
 								<WrapDynamicColumn dynamicColoumn={columnConfig.bangumiCNWeek} list={bangumiList} />
 							</div>
 							<div className="fr">
-								<WrapRank list={rankList} />
+								<WrapRank list={rankList.rankLists} />
 							</div>
 						</div>
 					<div className="bangumiCN clear">
@@ -286,7 +281,7 @@ class HomeMain extends Component{
 							<WrapColumn title={columnConfig.bangumiCN} list={columnList.bangumiCN} />
 						</div>
 						<div className="fr">
-							<WrapRank list={rankList} />
+							<WrapRank list={rankList.bangumiCN} />
 						</div>
 					</div>
 
@@ -296,7 +291,7 @@ class HomeMain extends Component{
 							<WrapColumn title={columnConfig.music} list={columnList.music} />
 						</div>
 						<div className="fr">
-							<WrapRank list={rankList} />
+							<WrapRank list={rankList.music} />
 						</div>
 					</div>
 
@@ -306,7 +301,7 @@ class HomeMain extends Component{
 							<WrapColumn title={columnConfig.dance} list={columnList.dance} />
 						</div>
 						<div className="fr">
-							<WrapRank list={rankList} />
+							<WrapRank list={rankList.dance} />
 						</div>
 					</div>
 
@@ -316,7 +311,7 @@ class HomeMain extends Component{
 							<WrapColumn title={columnConfig.game} list={columnList.game} />
 						</div>
 						<div className="fr">
-							<WrapRank list={rankList} />
+							<WrapRank list={rankList.game} />
 						</div>
 					</div>
 
@@ -326,7 +321,7 @@ class HomeMain extends Component{
 							<WrapColumn title={columnConfig.technology} list={columnList.technology} />
 						</div>
 						<div className="fr">
-							<WrapRank list={rankList} />
+							<WrapRank list={rankList.technology} />
 						</div>
 					</div>
 
@@ -336,7 +331,7 @@ class HomeMain extends Component{
 							<WrapColumn title={columnConfig.life} list={columnList.life} />
 						</div>
 						<div className="fr">
-							<WrapRank list={rankList} />
+							<WrapRank list={rankList.life} />
 						</div>
 					</div>
 
@@ -346,7 +341,7 @@ class HomeMain extends Component{
 							<WrapColumn title={columnConfig.kichiku} list={columnList.kichiku} />
 						</div>
 						<div className="fr">
-							<WrapRank list={rankList} />
+							<WrapRank list={rankList.kichiku} />
 						</div>
 					</div>
 
@@ -356,7 +351,7 @@ class HomeMain extends Component{
 							<WrapColumn title={columnConfig.fashion} list={columnList.fashion} />
 						</div>
 						<div className="fr">
-							<WrapRank list={rankList} />
+							<WrapRank list={rankList.fashion} />
 						</div>
 					</div>
 
@@ -366,7 +361,7 @@ class HomeMain extends Component{
 							<WrapColumn title={columnConfig.ad} list={columnList.ad} />
 						</div>
 						<div className="fr">
-							<WrapRank list={rankList} />
+							<WrapRank list={rankList.ad} />
 						</div>
 					</div>
 
@@ -376,7 +371,7 @@ class HomeMain extends Component{
 							<WrapColumn title={columnConfig.happy} list={columnList.happy} />
 						</div>
 						<div className="fr">
-							<WrapRank list={rankList} />
+							<WrapRank list={rankList.happy} />
 						</div>
 					</div>
 
@@ -386,7 +381,7 @@ class HomeMain extends Component{
 							<WrapColumn title={columnConfig.movie} list={columnList.movie} />
 						</div>
 						<div className="fr">
-							<WrapRank list={rankList} />
+							<WrapRank list={rankList.movie} />
 						</div>
 					</div>
 
@@ -396,7 +391,7 @@ class HomeMain extends Component{
 							<WrapColumn title={columnConfig.teleplay} list={columnList.teleplay} />
 						</div>
 						<div className="fr">
-							<WrapRank list={rankList} />
+							<WrapRank list={rankList.teleplay} />
 						</div>
 					</div>
 
@@ -406,7 +401,7 @@ class HomeMain extends Component{
 							<WrapColumn title={columnConfig.cinephile} list={columnList.cinephile} />
 						</div>
 						<div className="fr">
-							<WrapRank list={rankList} />
+							<WrapRank list={rankList.cinephile} />
 						</div>
 					</div>
 
@@ -416,16 +411,16 @@ class HomeMain extends Component{
 							<WrapColumn title={columnConfig.documentary} list={columnList.documentary} />
 						</div>
 						<div className="fr">
-							<WrapRank list={rankList} />
+							<WrapRank list={rankList.documentary} />
 						</div>
 					</div>
 
 					{/* specialRecommod */}
-					<div className="specialRecommod clear">
+					{/* <div className="specialRecommod clear">
 						<div className="fl">
-							<WrapColumn title={columnConfig.specialRecommod} list={columnLists} />
+							<WrapColumn title={columnConfig.specialRecommod} list={columnList.columnList} />
 						</div>
-					</div>
+					</div> */}
 				</div>
 				{/* 侧边 */}
 				<SideMenu list={this.state.sideList} />
