@@ -9,6 +9,9 @@ import Menu from '../components/util/menu'
 import HomeMain from './main/home_main'
 import VideoRoom from './main/video_main'
 
+import RankList from './main/rank_list'
+
+
 // 404
 import NotFound from './../view/404'
 
@@ -29,6 +32,8 @@ class Home extends Component{
 							<Route exact path="/video/:avid" component={VideoRoom} />
 						{/* 番剧页 */}
 
+						{/* 排行页 */}
+							<Route path="/ranking" component={RankList} />
 						{/* 异常页 */}
 						<Route path='/404' component={NotFound} />
 						<Redirect from='*' to='/404' />

@@ -50,6 +50,8 @@ function mapDispatchToProps(dispatch){
 				url:'getColumnList',
 				data: {
 					type,
+					pageIndex: 1,
+					pageSize: 8,
 				}
 			})
 			.then(res => {
@@ -64,6 +66,8 @@ function mapDispatchToProps(dispatch){
 				url:'getRankList',
 				data: {
 					type,
+					pageIndex: 1,
+					pageSize: 8,
 				}
 			})
 			.then(res => {

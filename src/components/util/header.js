@@ -29,12 +29,12 @@ class Search extends Component {
 	render(){
 		return (
 			<div className="navSearch">
-				<Link to="/ranking">
+				<Link to="/ranking" target="_blank">
 					<button>排行榜</button>
 				</Link>
 				<label>
 					<input type="text" name="search" placeholder={this.state.searchText} />
-					<Link to="/search">
+					<Link to="/search" target="_blank">
 						<i></i>
 					</Link>
 				</label>
