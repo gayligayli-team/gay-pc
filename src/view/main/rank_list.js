@@ -59,7 +59,7 @@ class RankMain extends Component{
 						{/* 新人排名 */}
 						<Route exact path="/ranking/rookie" component={RookieRank} />
 					</Switch>
-					{/* 侧边 */}
+					{/* scroll-top */}
 					<SideMenu />
 				</div>
 			</div>

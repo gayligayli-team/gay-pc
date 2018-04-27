@@ -10,6 +10,7 @@ import HomeMain from './main/home_main'
 import VideoRoom from './main/video_main'
 
 import RankList from './main/rank_list'
+import Search from './main/search'
 
 
 // 404
@@ -34,6 +35,8 @@ class Home extends Component{
 
 						{/* 排行页 */}
 							<Route path="/ranking" component={RankList} />
+						{/* 搜索页 */}
+							<Route path="/search" component={Search} />
 						{/* 异常页 */}
 						<Route path='/404' component={NotFound} />
 						<Redirect from='*' to='/404' />
