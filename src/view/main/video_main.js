@@ -23,15 +23,15 @@ const mapStateToProps =  state => {
 // mapDispatchToProps
 function mapDispatchToProps(dispatch){
 	return {
-		updateVideoInfo: _ => {
+		updateVideoInfo: avid => {
 			api({
 				url: 'video/queryVideoDetail',
 				data: {
-					avid: 1
+					avid,
 				}
 			})
 			.then(res => {
-				console.log(res);
+				// console.log(res);
 				return dispatch({
 					...action.update_video_info,
 					data: res.data,
@@ -44,14 +44,16 @@ function mapDispatchToProps(dispatch){
 
 
 class VideoRoomUI extends Component{
-	// constructor(props){
-	// 	super(props)
-	// }
 	componentDidMount(){
+		const avid = this.props.match.params.avid.slice(2, );
 		const {
 			updateVideoInfo
 		} = this.props;
-		updateVideoInfo();
+		if(typeof +avid !== 'number' || avid <= 0 || avid%1 !== 0){
+			console.log("avid异常");
+			return;
+		}
+		updateVideoInfo(avid);
 	}
 	createtime = e => {
 		if(!e)return "";

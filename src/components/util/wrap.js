@@ -51,7 +51,7 @@ class WrapColumn extends Component{
 				<ul className="clear">
 					{this.props.list.map((child, index) => (
 						<li key={index}>
-							<Link to={child.url}>
+							<Link to={`/video/av${child.avid}`}>
 								<img src={child.pic} alt="" />
 								<p className="title">{child.title}</p>
 								<p className="info">

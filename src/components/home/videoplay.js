@@ -51,8 +51,12 @@ class Play extends Component{
 		// this.queryVideo();			// socket query Video(Buffer) => blob => MSE => HttpBlob
 		// this.getVideo();			// 监听视频加载
 
-		this.loading();			// fetch  加载  video(File)   => blob => MSE => HttpBlob
+		// this.loading();			// fetch  加载  video(File)   => blob => MSE => HttpBlob
 		// 进度条缓冲(伪
+		// this.loadStart();
+	}
+	componentWillReceiveProps(props){
+		this.loading(props.videoDetail.videoDetail.source);
 		this.loadStart();
 	}
 	componentWillUnmount(){
@@ -285,9 +289,9 @@ class Play extends Component{
 	queryVideo = _ => {
 		this.webscoket.emit('queryVideo', this.props.match.params);
 	}
-	loading = _ => {
+	loading = file => {
 		// fetch("https://www.alice47.com/video/0.mp4")
-		fetch("http://127.0.0.1:9999/video/0.mp4")
+		fetch(file)
 		.then(response => {
 			return response.blob()
 		}).then(json => {
@@ -533,9 +537,5 @@ class Play extends Component{
 		)
 	}
 }
-
-
-
-
 
 export default Play
