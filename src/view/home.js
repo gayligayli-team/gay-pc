@@ -9,7 +9,7 @@ import Menu from '../components/util/menu'
 import HomeMain from './main/home_main'
 import VideoRoom from './main/video_main'
 
-import RankList from './main/rank_list'
+import RankList from './main/rank'
 import Search from './main/search'
 
 

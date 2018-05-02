@@ -20,6 +20,20 @@ const mapStateToProps = state => {
 // mapDispatchToProps
 function mapDispatchToProps(dispatch){
 	return {
+		queryRankList: type => {
+			api({
+				url:'ranking',
+				data: {
+					type
+				}
+			})
+			.then(res => {
+				return dispatch({
+					...action.update_ranking,
+					data: res.data.list
+				})
+			})
+		},
 	}
 }
 
@@ -27,23 +41,28 @@ function mapDispatchToProps(dispatch){
 // 内容
 class RankMain extends Component{
 	componentDidMount(){
+		let arr = ['/ranking/all', '/ranking/origin', '/ranking/bangumi', '/ranking/cinema', '/ranking/rookie'];
+		let n = arr.indexOf(this.props.location.pathname)+1;
 		const {
+			queryRankList
 		} = this.props
 		// 加载列表
+		queryRankList(n);
 	}
 	render(){
 		const {
+			// rankingList
 		} = this.props
 		return (
 			<div>
 				<div className="main">
 					{/* rank-nav */}
-					<div>
-						<Link to='/ranking/all'>全站榜</Link>
-						<Link to='/ranking/origin'>原创榜</Link>
-						<Link to='/ranking/bangumi'>新番榜</Link>
-						<Link to='/ranking/cinema'>影视榜</Link>
-						<Link to='/ranking/rookie'>新人榜</Link>
+					<div className="rank_menu">
+						<Link to='/ranking/all' className={this.props.location.pathname==='/ranking/all'?"active":""}>全站榜</Link>
+						<Link to='/ranking/origin' className={this.props.location.pathname==='/ranking/origin'?"active":""}>原创榜</Link>
+						<Link to='/ranking/bangumi' className={this.props.location.pathname==='/ranking/bangumi'?"active":""}>新番榜</Link>
+						<Link to='/ranking/cinema' className={this.props.location.pathname==='/ranking/cinema'?"active":""}>影视榜</Link>
+						<Link to='/ranking/rookie' className={this.props.location.pathname==='/ranking/rookie'?"active":""}>新人榜</Link>
 					</div>
 					{/* rank-list */}
 					<Switch>
@@ -72,7 +91,7 @@ class AllRank extends Component{
 	render(){
 		return (
 			<div>
-				AllRank：全站榜
+				NativeRank：全站榜
 			</div>
 		)
 	}

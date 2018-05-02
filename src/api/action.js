@@ -55,6 +55,11 @@ const update_bangumi_list = {
 	type: 'LOADING_BANGUMI_LIST'
 }
 
+// ranking
+const update_ranking = {
+	type: 'UPDATE_RANKING'
+}
+
 // video
 const update_video_info = {
 	type: 'LOADING_VIDEO_INFO'
@@ -70,4 +75,5 @@ export default {
 	update_bangumi_list,
 
 	update_video_info,
+	update_ranking,
 }

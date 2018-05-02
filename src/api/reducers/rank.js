@@ -1,12 +1,12 @@
 export const rank = function(state = {
-	rankList: {},
+	rankingList: [],
 }, action){
 	const { type, data } = action;
 	switch (type){
-		case 'LOADING_RANK_LIST':
+		case 'UPDATE_RANKING':
 			return {
 				...state,
-				rankList: data,
+				rankingList: data,
 			}
 
 		default:
