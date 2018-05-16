@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import './../../static/css/rank.css'
-import { Route, Switch, Link } from 'react-router-dom'
+import { Route, Switch, Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import api from './../../api/fetch'
 import action from './../../api/action'
@@ -66,9 +66,9 @@ class RankMain extends Component{
 					</div>
 					{/* rank-list */}
 					<Switch>
-						<Route exact path="/ranking" component={AllRank} />
+						<Redirect exact from='/ranking' to='/ranking/all' />
 						{/* 全站排名 */}
-						<Route exact path="/ranking/all" component={AllRank} />
+						<Route exact path="/ranking/all" component={CommonRankList} />
 						{/* 原创排名 */}
 						<Route exact path="/ranking/origin" component={NativeRank} />
 						{/* 番剧排名 */}
@@ -91,7 +91,7 @@ class AllRank extends Component{
 	render(){
 		return (
 			<div>
-				NativeRank：全站榜
+				<CommonRankList />
 			</div>
 		)
 	}
@@ -136,6 +136,77 @@ class RookieRank extends Component{
 		return (
 			<div>
 				RookieRank：新人榜
+			</div>
+		)
+	}
+}
+
+// 排行列表
+class CommonRankList extends Component{
+	constructor(props){
+		super(props)
+		this.state = {
+			tag: ["全部", ""],
+			list: [],
+		}
+	}
+	componentDidMount(){
+		let arr = ['/ranking/all', '/ranking/origin', '/ranking/bangumi', '/ranking/cinema', '/ranking/rookie'];
+		let type = arr.indexOf(this.props.location.pathname)+1;
+		api({
+			url:'ranking',
+			data: {
+				type
+			}
+		})
+		.then(res => {
+			if(res.result === 0){
+				let list = res.data.list;
+				console.log(list[0]);
+				this.setState({
+					list,
+				});
+			}else{
+				console.warn(res);
+			}
+		}).catch(err => {
+			console.log(err);
+		});
+	}
+	render(){
+		return (
+			<div className="rankList">
+				{/* RankList-tag */}
+				<div className="title">
+					{this.state.tag.map((child, index) => (
+						<li key={index}>
+							{child}
+						</li>
+					))}
+				</div>
+				{/* WrapRank-list */}
+				<ul className="clear">
+					{this.state.list.map((child, index) => (
+						<li key={index}>
+							<div className='fl_l'>
+								<div>{index+1}</div>
+								<div>
+									<img src={child.src} />
+								</div>
+								<div>
+									<p>{child.name}</p>
+									<p>
+										<span>{child.author_id}</span>
+										<span>{child.author_id}</span>
+										<span>{child.author_id}</span>
+									</p>
+								</div>
+							</div>
+							<div className='fl_r'>
+							</div>
+						</li>
+					))}
+				</ul>
 			</div>
 		)
 	}
