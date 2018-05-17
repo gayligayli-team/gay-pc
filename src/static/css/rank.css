@@ -12,3 +12,82 @@
 	color: #00a1d6;
 	border-bottom: 2px solid #00a1d6;
 }
+.rank_list li{
+	padding: 20px 0;
+	height: 70px;
+	border-bottom: 1px solid #e8e8e8;
+	border-radius: 2px;
+}
+.rank_list li:hover{
+	box-shadow: rgba(0,0,0,0.3) 0 0 4px;
+	-webkit-box-shadow: rgba(0,0,0,0.3) 0 0 4px;
+}
+.rank_list li .fl>div{
+	float: left;
+}
+.rank_index{
+	width: 80px;
+	line-height: 70px;
+	font-size: 36px;
+	text-align: center;
+	color: #b8c0cc;
+}
+.rank_img{
+	margin-right: 15px;
+}
+.rank_img img{
+	width: 120px;
+	height: 70px;
+}
+.rank_text{
+	
+}
+.rank_tit{
+	margin-bottom: 16px;
+	height: 24px;
+	line-height: 24px;
+}
+.rank_tit:hover, .rank_info .icon_author:hover{
+	color: #00a1d6;
+	cursor: pointer;
+	transition: color .3s;
+}
+.rank_info{
+	height: 20px;
+	line-height: 20px;
+}
+.rank_info span{
+	display: inline-block;
+	width: 60px;
+	margin-right: 20px;
+	text-indent: 18px;
+	color: #99a2aa;
+	background-image: url(https://static.hdslb.com/images/base/icons.png);
+	overflow: hidden;
+}
+
+.icon_play{
+	background-position: -282px -86px;
+}
+.icon_danmaku{
+	background-position: -282px -214px;
+}
+.icon_author{
+	background-position: -282px -150px;
+}
+
+
+.rank_list li .fr{
+	width: 100px;
+}
+.rank_list li .fr p{
+	margin-top: 15px;
+	text-align: center;
+	color: #b8c0cc;
+}
+.rank_list li .fr p.rank_pts{
+	margin-top: 25px;
+	font-weight: bold;
+	font-size: 16px;
+	color: #00a1d6;
+}

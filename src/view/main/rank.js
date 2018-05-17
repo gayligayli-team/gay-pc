@@ -70,13 +70,13 @@ class RankMain extends Component{
 						{/* 全站排名 */}
 						<Route exact path="/ranking/all" component={CommonRankList} />
 						{/* 原创排名 */}
-						<Route exact path="/ranking/origin" component={NativeRank} />
+						<Route exact path="/ranking/origin" component={CommonRankList} />
 						{/* 番剧排名 */}
-						<Route exact path="/ranking/bangumi" component={BangumiRank} />
+						<Route exact path="/ranking/bangumi" component={CommonRankList} />
 						{/* 影视排名 */}
-						<Route exact path="/ranking/cinema" component={CinemaRank} />
+						<Route exact path="/ranking/cinema" component={CommonRankList} />
 						{/* 新人排名 */}
-						<Route exact path="/ranking/rookie" component={RookieRank} />
+						<Route exact path="/ranking/rookie" component={CommonRankList} />
 					</Switch>
 					{/* scroll-top */}
 					<SideMenu />
@@ -184,25 +184,27 @@ class CommonRankList extends Component{
 						</li>
 					))}
 				</div>
-				{/* WrapRank-list */}
-				<ul className="clear">
+				{/* RankList-list */}
+				<ul className="rank_list">
 					{this.state.list.map((child, index) => (
-						<li key={index}>
-							<div className='fl_l'>
-								<div>{index+1}</div>
-								<div>
+						<li className="clear" key={index}>
+							<div className='fl clear'>
+								<div className='rank_index'>{index+1}</div>
+								<div className='rank_img'>
 									<img src={child.src} />
 								</div>
-								<div>
-									<p>{child.name}</p>
-									<p>
-										<span>{child.author_id}</span>
-										<span>{child.author_id}</span>
-										<span>{child.author_id}</span>
+								<div className='rank_text'>
+									<p className='rank_tit'>{child.name}</p>
+									<p className='rank_info'>
+										<span className='icon_play'>{child.author_id}</span>
+										<span className='icon_danmaku'>{child.author_id}</span>
+										<span className='icon_author'>{child.author_id}</span>
 									</p>
 								</div>
 							</div>
-							<div className='fl_r'>
+							<div className='fr'>
+								<p className='rank_pts'>{child.author_id}</p>
+								<p>综合评分</p>
 							</div>
 						</li>
 					))}
