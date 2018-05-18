@@ -1,3 +1,6 @@
+.main>div:first-child{
+	margin: 0;
+}
 .rank_menu a{
 	display: inline-block;
 	margin: 15px 30px 0;
@@ -34,6 +37,10 @@
 }
 .rank_img{
 	margin-right: 15px;
+	width: 120px;
+	height: 70px;
+	background: url(../img/default_bg.png) no-repeat 50% 50%;
+	cursor: pointer;
 }
 .rank_img img{
 	width: 120px;
@@ -76,6 +83,23 @@
 	background-position: -282px -150px;
 }
 
+.rank_tag{
+	margin-bottom: 15px;
+	padding: 0 10px;
+	height: 40px;
+	line-height: 40px;
+	border-radius: 4px;
+	background: #edf2f9;
+}
+.rank_tag li{
+	display: inline-block;
+	padding: 0 5px;
+	font-size: 14px;
+	cursor: pointer;
+}
+.rank_tag li.active{
+	color: #00a1d6;
+}
 
 .rank_list li .fr{
 	width: 100px;

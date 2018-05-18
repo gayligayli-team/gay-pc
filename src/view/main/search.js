@@ -1,9 +1,9 @@
 import React, { Component } from "react"
 import './../../static/css/search.css'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import api from './../../api/fetch'
-import action from './../../api/action'
+// import api from './../../api/fetch'
+// import action from './../../api/action'
 
 
 // component
@@ -58,13 +58,11 @@ class SearchMain extends Component{
 		console.log("搜索")
 	}
 	componentDidMount(){
-		const {
-		} = this.props
+		// const {} = this.props
 		// 加载列表
 	}
 	render(){
-		const {
-		} = this.props
+		// const {} = this.props
 		return (
 			<div>
 				<div className="main">

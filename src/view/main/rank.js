@@ -50,9 +50,6 @@ class RankMain extends Component{
 		queryRankList(n);
 	}
 	render(){
-		const {
-			// rankingList
-		} = this.props
 		return (
 			<div>
 				<div className="main">
@@ -86,7 +83,7 @@ class RankMain extends Component{
 	}
 }
 
-// 全站榜
+/*// 全站榜
 class AllRank extends Component{
 	render(){
 		return (
@@ -139,30 +136,52 @@ class RookieRank extends Component{
 			</div>
 		)
 	}
-}
+}*/
 
 // 排行列表
 class CommonRankList extends Component{
 	constructor(props){
 		super(props)
 		this.state = {
-			tag: ["全部", ""],
+			tag: ["全部", "动画", "国创", "音乐", "舞蹈", "游戏", "科技", "生活", "鬼畜", "时尚", "娱乐", "影视"],
 			list: [],
+			active_tag: 0,
+			active_type: 0,
 		}
 	}
 	componentDidMount(){
 		let arr = ['/ranking/all', '/ranking/origin', '/ranking/bangumi', '/ranking/cinema', '/ranking/rookie'];
-		let type = arr.indexOf(this.props.location.pathname)+1;
+		let active_type = arr.indexOf(this.props.location.pathname)+1;
+		this.setState({
+			active_type,
+		});
+		this.queryRankList({
+			type: active_type,
+			tagId: this.state.active_tag,
+		});
+	}
+	changeTag = e => {
+		if(e.target.getAttribute('class')==='active')return;
+		let _index = +e.currentTarget.getAttribute('index');
+		this.setState({
+			active_tag: _index,
+		});
+		this.queryRankList({
+			type: this.state.active_type,
+			tagId: _index,
+		});
+	}
+	queryRankList = ({type, tagId}) =>{
 		api({
 			url:'ranking',
 			data: {
-				type
+				type,
+				tagId,
 			}
 		})
 		.then(res => {
 			if(res.result === 0){
 				let list = res.data.list;
-				console.log(list[0]);
 				this.setState({
 					list,
 				});
@@ -177,13 +196,16 @@ class CommonRankList extends Component{
 		return (
 			<div className="rankList">
 				{/* RankList-tag */}
-				<div className="title">
+				<ul className="rank_tag">
 					{this.state.tag.map((child, index) => (
-						<li key={index}>
-							{child}
+						<li className={this.state.active_tag===index?'active':''}
+						 key={index}
+						 index={index}
+						 onClick={this.changeTag}>
+						{child}
 						</li>
 					))}
-				</div>
+				</ul>
 				{/* RankList-list */}
 				<ul className="rank_list">
 					{this.state.list.map((child, index) => (
@@ -191,7 +213,7 @@ class CommonRankList extends Component{
 							<div className='fl clear'>
 								<div className='rank_index'>{index+1}</div>
 								<div className='rank_img'>
-									<img src={child.src} />
+									<img src={child.src} alt='' />
 								</div>
 								<div className='rank_text'>
 									<p className='rank_tit'>{child.name}</p>
