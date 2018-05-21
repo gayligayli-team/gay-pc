@@ -40,14 +40,33 @@ function mapDispatchToProps(dispatch){
 
 // 内容
 class RankMain extends Component{
+	constructor(props){
+		super(props)
+		this.state = {
+			router: [{
+				name: '全站榜',
+				path: '/ranking/all'
+			},{
+				name: '原创榜',
+				path: '/ranking/origin'
+			},{
+				name: '新番榜',
+				path: '/ranking/bangumi'
+			},{
+				name: '影视榜',
+				path: '/ranking/cinema'
+			},{
+				name: '新人榜',
+				path: '/ranking/rookie'
+			}],
+			active_router: 0,
+		}
+	}
 	componentDidMount(){
-		let arr = ['/ranking/all', '/ranking/origin', '/ranking/bangumi', '/ranking/cinema', '/ranking/rookie'];
-		let n = arr.indexOf(this.props.location.pathname)+1;
-		const {
-			queryRankList
-		} = this.props
-		// 加载列表
-		queryRankList(n);
+		let active_router = this.props.location.pathname;
+		this.setState({
+			active_router,
+		});
 	}
 	render(){
 		return (
@@ -55,11 +74,14 @@ class RankMain extends Component{
 				<div className="main">
 					{/* rank-nav */}
 					<div className="rank_menu">
-						<Link to='/ranking/all' className={this.props.location.pathname==='/ranking/all'?"active":""}>全站榜</Link>
+						{/* <Link to='/ranking/all' className={this.props.location.pathname==='/ranking/all'?"active":""}>全站榜</Link>
 						<Link to='/ranking/origin' className={this.props.location.pathname==='/ranking/origin'?"active":""}>原创榜</Link>
 						<Link to='/ranking/bangumi' className={this.props.location.pathname==='/ranking/bangumi'?"active":""}>新番榜</Link>
 						<Link to='/ranking/cinema' className={this.props.location.pathname==='/ranking/cinema'?"active":""}>影视榜</Link>
-						<Link to='/ranking/rookie' className={this.props.location.pathname==='/ranking/rookie'?"active":""}>新人榜</Link>
+						<Link to='/ranking/rookie' className={this.props.location.pathname==='/ranking/rookie'?"active":""}>新人榜</Link> */}
+						{this.state.router.map((child, index) => (
+							<Link to={child.path} className={this.props.location.pathname===child.path?"active":""}>{child.name}</Link>
+						))}
 					</div>
 					{/* rank-list */}
 					<Switch>
@@ -143,6 +165,7 @@ class CommonRankList extends Component{
 	constructor(props){
 		super(props)
 		this.state = {
+			path_list: ['/ranking/all', '/ranking/origin', '/ranking/bangumi', '/ranking/cinema', '/ranking/rookie'],
 			tag: ["全部", "动画", "国创", "音乐", "舞蹈", "游戏", "科技", "生活", "鬼畜", "时尚", "娱乐", "影视"],
 			list: [],
 			active_tag: 0,
@@ -150,8 +173,18 @@ class CommonRankList extends Component{
 		}
 	}
 	componentDidMount(){
-		let arr = ['/ranking/all', '/ranking/origin', '/ranking/bangumi', '/ranking/cinema', '/ranking/rookie'];
-		let active_type = arr.indexOf(this.props.location.pathname)+1;
+		this.checkRoutePath(this.props.location.pathname);
+	}
+	componentWillReceiveProps(props){
+		this.checkRoutePath(props.location.pathname);
+	}
+	/*shouldComponentUpdate(n){
+		console.warn(n);
+	}*/
+	checkRoutePath = path => {
+		let arr = this.state.path_list;
+		let active_type = arr.indexOf(path)+1;
+		if(active_type===this.state.active_type)return;
 		this.setState({
 			active_type,
 		});
