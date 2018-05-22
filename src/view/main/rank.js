@@ -3,7 +3,7 @@ import './../../static/css/rank.css'
 import { Route, Switch, Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import api from './../../api/fetch'
-import action from './../../api/action'
+// import action from './../../api/action'
 
 
 // component
@@ -13,27 +13,27 @@ import action from './../../api/action'
 // mapStateToProps
 const mapStateToProps = state => {
 	return {
-		...state.rank
+		// ...state.rank
 	}
 }
 
 // mapDispatchToProps
 function mapDispatchToProps(dispatch){
 	return {
-		queryRankList: type => {
-			api({
-				url:'ranking',
-				data: {
-					type
-				}
-			})
-			.then(res => {
-				return dispatch({
-					...action.update_ranking,
-					data: res.data.list
-				})
-			})
-		},
+		// queryRankList: type => {
+		// 	api({
+		// 		url:'ranking',
+		// 		data: {
+		// 			type
+		// 		}
+		// 	})
+		// 	.then(res => {
+		// 		return dispatch({
+		// 			...action.update_ranking,
+		// 			data: res.data.list
+		// 		})
+		// 	})
+		// },
 	}
 }
 
