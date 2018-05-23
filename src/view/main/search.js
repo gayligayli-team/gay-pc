@@ -32,6 +32,15 @@ class SearchMain extends Component{
 	constructor(props){
 		super(props)
 		this.state = {
+			menuList: ['综合', '视频', '番剧', '影视', '直播', '专栏', '话题', '用户', '相簿'],
+			searchParamsSort: ['综合排序', '最多点击', '最新发布', '最多弹幕', '最多收藏'],
+			searchParamsTime: ['全部时长', '10分钟以下', '10-30分钟', '30-60分钟', '60分钟以上'],
+			searchParamsType: ['全部分区', '动画', '番剧', '国创', '音乐', '舞蹈', '游戏', '科技', '生活', '鬼畜', '时尚', '广告', '娱乐', '影视', '纪录片', '电影', '电视剧'],
+			list: [],
+			active_type: 0,
+			active_params_sort: 0,
+			active_params_time: 0,
+			active_params_type: 0,
 			searchKey: {
 				type: "text",
 				name: "search_key",
@@ -43,13 +52,44 @@ class SearchMain extends Component{
 				title: "搜索",
 				width: 90,
 			},
-			list: [],
 		}
 	}
 	componentDidMount(){
 		// const {} = this.props
 		// 加载列表
 		this.querySearchList();
+	}
+	changeType = e => {
+		if(e.target.getAttribute('class')==='active')return;
+		let _index = +e.currentTarget.getAttribute('index');
+		this.setState({
+			active_type: _index,
+		});
+		/*this.queryRankList({
+			type: this.state.active_ttype,
+			tagId: _index,
+		});*/
+	}
+	changeParamsSort = e => {
+		if(e.target.getAttribute('class')==='active')return;
+		let _index = +e.currentTarget.getAttribute('index');
+		this.setState({
+			active_params_sort: _index,
+		});
+	}
+	changeParamsTime = e => {
+		if(e.target.getAttribute('class')==='active')return;
+		let _index = +e.currentTarget.getAttribute('index');
+		this.setState({
+			active_params_time: _index,
+		});
+	}
+	changeParamsType = e => {
+		if(e.target.getAttribute('class')==='active')return;
+		let _index = +e.currentTarget.getAttribute('index');
+		this.setState({
+			active_params_type: _index,
+		});
 	}
 	searchKeyChange = e => {
 		this.setState({
@@ -96,9 +136,43 @@ class SearchMain extends Component{
 						<Button {...this.state.searchBtn} click={this.searchSubmit} />
 					</div>
 					{/* search-type */}
+					<ul className="search_type clear">
+						{this.state.menuList.map((child, index) => (
+							<li className={this.state.active_type===index?" active":""}
+							 index={index}
+							 key={index}
+							 onClick={this.changeType}>{child}</li>
+						))}
+					</ul>
+					<div className="type_select">
+						<ul className="clear">
+							{this.state.searchParamsSort.map((child, index) => (
+								<li className={this.state.active_params_sort===index?" active":""}
+								 index={index}
+								 key={index}
+								 onClick={this.changeParamsSort}>{child}</li>
+							))}
+						</ul>
+						<ul className="clear">
+							{this.state.searchParamsTime.map((child, index) => (
+								<li className={this.state.active_params_time===index?" active":""}
+								 index={index}
+								 key={index}
+								 onClick={this.changeParamsTime}>{child}</li>
+							))}
+						</ul>
+						<ul className="clear">
+							{this.state.searchParamsType.map((child, index) => (
+								<li className={this.state.active_params_type===index?" active":""}
+								 index={index}
+								 key={index}
+								 onClick={this.changeParamsType}>{child}</li>
+							))}
+						</ul>
+					</div>
 					{/* search-list */}
 					<ul className="search_list clear">
-						{this.state.list.map((child, index) =>(
+						{this.state.list.map((child, index) => (
 							<li className="clear" key={index}>
 								<div className="cover">
 									<img src={child.pic} alt='' />

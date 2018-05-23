@@ -5,7 +5,7 @@
 .main>div{
 	margin-bottom: 30px;
 }
-.main>div:first-child{
+.main>.recommend{
 	margin-bottom: 40px;
 }
 .recommend>div{
