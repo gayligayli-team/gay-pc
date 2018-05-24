@@ -37,6 +37,8 @@ class Input extends Component{
 			name,
 			value,
 			max,
+			width,
+			css,
 		} = this.props;
 		return (
 			<input
@@ -46,8 +48,8 @@ class Input extends Component{
 			defaultValue={value}
 			onChange={this.handleChange}
 			maxLength={max}
-			style={{width: this.props.width+"px"}}
-			className="from_input" />
+			style={{width: width+"px"}}
+			className={`${css?css+" ":""}from_input`} />
 		)
 	}
 }
@@ -61,14 +63,16 @@ class Checkbox extends Component{
 	render(){
 		const {
 			placeholder,
+			name,
+			width,
 		} = this.props;
 		return (
 			<input
 			onClick={this.event}
 			placeholder={placeholder}
 			type="checkbox"
-			name={this.props.name}
-			style={{width: this.props.width+"px"}}
+			name={name}
+			style={{width: width+"px"}}
 			className="from_checkbox" />
 		)
 	}

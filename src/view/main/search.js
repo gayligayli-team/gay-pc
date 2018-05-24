@@ -47,11 +47,13 @@ class SearchMain extends Component{
 				placeholder: "",
 				value: '',
 				width: 320,
+				css: 'search_input'
 			},
 			searchBtn: {
 				title: "搜索",
 				width: 90,
 			},
+			params_more_status: false,
 		}
 	}
 	componentDidMount(){
@@ -99,6 +101,12 @@ class SearchMain extends Component{
 			}
 		})
 	}
+	// 切换详情&简要
+	changeParamsMore = _ => {
+		this.setState({
+			params_more_status: !this.state.params_more_status,
+		});
+	}
 	// 搜索
 	searchSubmit = _ => {
 		console.log("搜索")
@@ -131,9 +139,11 @@ class SearchMain extends Component{
 			<div>
 				<div className="main">
 					{/* search-input */}
-					<div className="clear">
-						<Input {...this.state.searchKey} changeValue={this.searchKeyChange} />
-						<Button {...this.state.searchBtn} click={this.searchSubmit} />
+					<div className="search_wrap clear">
+						<div className="search_box">
+							<Input {...this.state.searchKey} changeValue={this.searchKeyChange} />
+							<Button {...this.state.searchBtn} click={this.searchSubmit} />
+						</div>
 					</div>
 					{/* search-type */}
 					<ul className="search_type clear">
@@ -144,7 +154,12 @@ class SearchMain extends Component{
 							 onClick={this.changeType}>{child}</li>
 						))}
 					</ul>
-					<div className="type_select">
+					<div className={`${this.state.params_more_status?"params_more ":""}type_select`}>
+						<div onClick={this.changeParamsMore}
+							 className={`${this.state.params_more_status?"point_more ":""}params_point`}>
+							{`${this.state.params_more_status?'更少筛选↑':'更多筛选↓'}`}
+						</div>
+						<div className="search_count">共1000+条数据</div>
 						<ul className="clear">
 							{this.state.searchParamsSort.map((child, index) => (
 								<li className={this.state.active_params_sort===index?" active":""}
