@@ -53,6 +53,7 @@ class SearchMain extends Component{
 				title: "搜索",
 				width: 90,
 			},
+			list_dense_status: true,
 			params_more_status: false,
 		}
 	}
@@ -107,6 +108,13 @@ class SearchMain extends Component{
 			params_more_status: !this.state.params_more_status,
 		});
 	}
+	changeListDense = e => {
+		if(e.target.getAttribute('class')==='active')return;
+		let list_dense_status = !+e.currentTarget.getAttribute('index');
+		this.setState({
+			list_dense_status,
+		});
+	}
 	// 搜索
 	searchSubmit = _ => {
 		console.log("搜索")
@@ -155,6 +163,16 @@ class SearchMain extends Component{
 						))}
 					</ul>
 					<div className={`${this.state.params_more_status?"params_more ":""}type_select`}>
+						<div className="dense_type">
+							{['井', '三'].map((child, index) => (
+								<span onClick={this.changeListDense}
+								 index={index}
+								 key={index}
+								 className={this.state.list_dense_status===!!index?"":"active"}>{child}</span>
+							))}
+							{/*<span className={this.state.list_dense_status?"active":""}>井</span>
+							<span className={this.state.list_dense_status?"":"active"}>三</span>*/}
+						</div>
 						<div onClick={this.changeParamsMore}
 							 className={`${this.state.params_more_status?"point_more ":""}params_point`}>
 							{`${this.state.params_more_status?'更少筛选↑':'更多筛选↓'}`}
@@ -186,7 +204,7 @@ class SearchMain extends Component{
 						</ul>
 					</div>
 					{/* search-list */}
-					<ul className="search_list clear">
+					<ul className={this.state.list_dense_status?"dense_list clear":"sparse_list"}>
 						{this.state.list.map((child, index) => (
 							<li className="clear" key={index}>
 								<div className="cover">
@@ -196,10 +214,10 @@ class SearchMain extends Component{
 								<div className="info">
 									<p className="title">{child.title}</p>
 									<p className="clear">
-										<span className="fl">{child.play}</span>
-										<span className="fr">{child.senddate}</span>
+										<span className="info_play">{child.play}</span>
+										<span className="info_senddate">{child.senddate}</span>
 									</p>
-									<p>{child.author}</p>
+									<p className="info_author">{child.author}</p>
 								</div>
 							</li>
 						))}
