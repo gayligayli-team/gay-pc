@@ -117,14 +117,15 @@ class SearchMain extends Component{
 	}
 	// 搜索
 	searchSubmit = _ => {
-		console.log("搜索")
+		this.querySearchList(this.state.searchKey.value);
 	}
-	querySearchList = () =>{
+	querySearchList = key =>{
 		api({
 			url: 'search',
 			data: {
 				pageIndex: 0,
 				pageSize: 30,
+				key,
 			}
 		})
 		.then(res => {
@@ -164,11 +165,11 @@ class SearchMain extends Component{
 					</ul>
 					<div className={`${this.state.params_more_status?"params_more ":""}type_select`}>
 						<div className="dense_type">
-							{['井', '三'].map((child, index) => (
-								<span onClick={this.changeListDense}
+							{['dense', 'sparse'].map((child, index) => (
+								<i onClick={this.changeListDense}
 								 index={index}
 								 key={index}
-								 className={this.state.list_dense_status===!!index?"":"active"}>{child}</span>
+								 className={this.state.list_dense_status===!!index?`icon_${child}`:`icon_${child}_active`}></i>
 							))}
 							{/*<span className={this.state.list_dense_status?"active":""}>井</span>
 							<span className={this.state.list_dense_status?"":"active"}>三</span>*/}
@@ -178,7 +179,7 @@ class SearchMain extends Component{
 							{`${this.state.params_more_status?'更少筛选↑':'更多筛选↓'}`}
 						</div>
 						<div className="search_count">共1000+条数据</div>
-						<ul className="clear">
+						<ul className={`${this.state.params_more_status?"":"hidden_more "}clear`}>
 							{this.state.searchParamsSort.map((child, index) => (
 								<li className={this.state.active_params_sort===index?" active":""}
 								 index={index}
