@@ -45,8 +45,6 @@ div.type_select.params_more{
 	padding: 0 8px;
 	top: 0;
 	right: 0;
-	/* height: 22px;
-	line-height: 22px; */
 	height: 30px;
 	line-height: 30px;
 }
@@ -83,8 +81,6 @@ div.type_select.params_more{
 }
 .search_count{
 	margin-bottom: 15px;
-	/* height: 20px;
-	line-height: 20px; */
 	height: 30px;
 	line-height: 30px;
 	color: #999;

@@ -171,8 +171,6 @@ class SearchMain extends Component{
 								 key={index}
 								 className={this.state.list_dense_status===!!index?`icon_${child}`:`icon_${child}_active`}></i>
 							))}
-							{/*<span className={this.state.list_dense_status?"active":""}>井</span>
-							<span className={this.state.list_dense_status?"":"active"}>三</span>*/}
 						</div>
 						<div onClick={this.changeParamsMore}
 							 className={`${this.state.params_more_status?"point_more ":""}params_point`}>

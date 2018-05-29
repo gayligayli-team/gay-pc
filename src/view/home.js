@@ -8,6 +8,7 @@ import Menu from '../components/util/menu'
 
 import HomeMain from './main/home_main'
 import VideoRoom from './main/video_main'
+import BangumiMedia from './main/bangumi_main'
 
 import RankList from './main/rank'
 import Search from './main/search'
@@ -32,6 +33,7 @@ class Home extends Component{
 						{/* 视频页 */}
 							<Route exact path="/video/:avid" component={VideoRoom} />
 						{/* 番剧页 */}
+							<Route exact path="/bangumi/:bid" component={BangumiMedia} />
 
 						{/* 排行页 */}
 							<Route path="/ranking" component={RankList} />
