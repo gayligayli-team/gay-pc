@@ -39,6 +39,7 @@ class BangumiMain extends Component{
 		return (
 			<div>
 				<div className="main">
+					番剧专栏页
 				</div>
 			</div>
 		)

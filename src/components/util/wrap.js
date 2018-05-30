@@ -141,7 +141,7 @@ class WrapRank extends Component{
 						<li key={index}>
 							<p className="clear">
 								<i>{index+1}</i>
-								<span>{child.title}</span>
+								<Link className="tit" to={`/video/av${child.avid}`}>{child.title}</Link>
 							</p>
 							<div className="popupInfo">
 								<p className="textTitle">{child.title}</p>

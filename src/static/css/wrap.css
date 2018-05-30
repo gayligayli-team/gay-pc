@@ -220,11 +220,12 @@
 	background: #b8c0cc;
 	cursor: default;
 }
-.wrapRank li>p span{
+.wrapRank li .tit{
 	float: left;
 	max-width: 285px;
 	height: 20px;
 	line-height: 20px;
+	color: #333;
 }
 .wrapRank li .popupInfo{
 	display: none;
@@ -286,7 +287,7 @@
 	width: 60px;
 }
 
-.wrapRank li:hover>p span{
+.wrapRank li:hover .tit{
 	color: #00a1d6;
 }
 .wrapRank li:hover .popupInfo{

@@ -8,6 +8,8 @@ import store from './../api/store.js'
 // Component
 import App from "./../App"
 import Home from './../view/home'
+import Other from './../view/other'
+
 
 // Entrance
 import Entrance from './../view/entrance'
@@ -26,6 +28,8 @@ class route extends Component{
 						<Switch>
 							{/* 登录功能 */}
 							<Route path="/entrance" component={Entrance} />
+							{/* 番剧分类 */}
+							<Route path="/bangumi" component={Other} />
 							{/* 核心功能 */}
 							<Route path="/" component={Home} />
 						</Switch>
