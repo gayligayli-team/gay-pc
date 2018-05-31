@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import './../../static/css/search.css'
+import './../../static/css/bangumi.css'
 import { connect } from 'react-redux'
 import api from './../../api/fetch'
 
@@ -38,8 +38,15 @@ class BangumiMain extends Component{
 	render(){
 		return (
 			<div>
-				<div className="main">
-					番剧专栏页
+				<div className="bangumi_nav">
+					
+				</div>
+				<div className="bangumi_menu">
+					
+				</div>
+				<div className="bangumi_main clear">
+					<div className="fl"></div>
+					<div className="fr"></div>
 				</div>
 			</div>
 		)

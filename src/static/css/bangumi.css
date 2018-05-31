@@ -1,0 +1,31 @@
+.home{
+	background-color: #f4f5f7;
+}
+.bangumi_nav{
+	width: 100%;
+	height: 420px;
+	filter: blur(40px);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: 50%;
+	background-image: url(../banner.jpg);
+}
+.bangumi_menu{
+	height: 60px;
+	line-height: 60px;
+	background: #fff;
+}
+.bangumi_main{
+	margin: 10px auto 0;
+	width: 1200px;
+}
+.bangumi_main .fl{
+	width: 830px;
+	height: 500px;
+	background: #fff;
+}
+.bangumi_main .fr{
+	width: 360px;
+	height: 500px;
+	background: #fff;
+}
