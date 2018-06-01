@@ -129,7 +129,7 @@
 	left: 0;
 	width: 100%;
 	height: 20px;
-	background: #fff;
+	/*background: #fff;*/
 }
 .wrapColumn li .info span{
 	display: inline-block;
@@ -481,23 +481,26 @@
 	width: 100px;
 	height: 80px;
 }
-.wrapDynamic li div span:first-child{
+.wrapDynamic li div .text{
+	color: #333;
+}
+.wrapDynamic li div .text:first-child{
 	display: block;
 	max-height: 50px;
 	overflow: hidden;
 	cursor: pointer;
 	transition: all .3s;
 }
-.wrapDynamic li div span:first-child:hover{
+.wrapDynamic li div .text:first-child:hover{
 	color: #00a1d6;
 }
-.wrapDynamic li div span:last-child{
+.wrapDynamic li div .text:last-child{
 	position: absolute;
 	bottom: 5px;
 	left: 0;
 	color: #aaa;
 }
-.wrapDynamic li span em{
+.wrapDynamic li span a{
 	display: inline-block;
 	margin-left: 5px;
 	padding: 0 7px;

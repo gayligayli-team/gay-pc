@@ -232,14 +232,16 @@ class WrapDynamicColumn extends Component{
 				<ul className="wrapDynamic clear">
 					{this.state.selectList.map((child, index) => (
 						<li className="clear" key={index}>
-							<img src={child.square_cover} alt={child.title} />
+							<Link to={`/bangumi/${child.season_id}`}>
+								<img src={child.square_cover} alt={child.title} />
+							</Link>
 							<div>
-								<span>{child.title}</span>
+								<Link className="text" to={`/bangumi/${child.season_id}`}>{child.title}</Link>
 								{/* <span>更新至<Link to='/home'>{child.title}</Link></span> */}
 								{
 									child.bgmcount!=="-1"?
-									<span>更新至<em className={child.new?"new":""}>{child.bgmcount}话</em></span>:
-									<span>尚未更新</span>
+									<span className="text">更新至<Link className={child.new?"new":""} to={`/bangumi/${child.season_id}`}>{child.bgmcount}话</Link></span>:
+									<span className="text">尚未更新</span>
 								}
 							</div>
 						</li>
