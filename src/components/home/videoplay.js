@@ -295,7 +295,7 @@ class Play extends Component{
 		.then(response => {
 			return response.blob()
 		}).then(json => {
-			let blob=new Blob([json]);
+			let blob = new Blob([json]);
 			// Blob => URL-String
 			let url = URL.createObjectURL(blob);
 			this.setState({
